@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
+import DepositPage from './components/DepositPage';
 
 const dummyAccounts = [
   {
@@ -47,6 +48,7 @@ function App() {
     <div>
       <NewAccount onAddAccount={addAccountHandler} />
       <Accounts owners={accounts}/>;
+      <DepositPage />
     </div>
   );
 }

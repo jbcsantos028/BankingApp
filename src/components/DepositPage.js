@@ -1,8 +1,12 @@
-import Deposit from "./Deposit"
+import Deposit from "./Deposit";
+import useState from "react";
 
-const DepositPage = () => {
+import "./DepositPage.css"
+
+const DepositPage = (props) => {
+
     return (
-        <div>
+        <div className="deposit-page">
             <Deposit />
         </div>
     )

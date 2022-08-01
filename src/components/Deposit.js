@@ -1,6 +1,8 @@
 import { useId, useState } from 'react';
 import { Accounts } from './Accounts';
 
+import "./Deposit.css";
+
 const Deposit = props => {
     const id = useId();
     const [input, setInput] = useState('');
