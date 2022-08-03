@@ -1,22 +1,20 @@
 import { useId, useState } from 'react';
-import { Accounts } from './Accounts';
 
 import "./Deposit.css";
 
 const Deposit = props => {
     const id = useId();
     const [input, setInput] = useState('');
+    const [update, setUpdate] = useState('')
     const showAmount = (e) => {
-        e.preventDefault();
-        const currentBalance = props.balance + parseInt(input);
-        console.log(currentBalance);
-
-        //wrong code below
-        return (
-            <div>
-                <div>{currentBalance}</div>
-            </div>
-        )
+        if (input !== '') {
+            e.preventDefault();
+            const previousBalance = props.whoseAccount.balance; 
+            console.log(props.whoseAccount.balance)
+            props.whoseAccount.balance = parseInt(props.whoseAccount.balance) + parseInt(input);
+            console.log(props.whoseAccount.balance);
+            setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
+        }  
     }
     return (
         <div className="deposit-wrapper">
@@ -26,7 +24,7 @@ const Deposit = props => {
                 <button onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
             <div className="new-details">
-                <div className="new-amount"></div>
+                <div className="new-amount">{update}</div>
             </div>
         </div>
     )

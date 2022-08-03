@@ -47,8 +47,8 @@ function App() {
   return (
     <div>
       <NewAccount onAddAccount={addAccountHandler} />
-      <Accounts owners={accounts}/>;
-      <DepositPage />
+      <Accounts owners={accounts} />
+      <DepositPage owners={accounts} />
     </div>
   );
 }
