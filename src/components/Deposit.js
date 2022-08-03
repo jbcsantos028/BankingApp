@@ -14,13 +14,13 @@ const Deposit = props => {
             props.whoseAccount.balance = parseInt(props.whoseAccount.balance) + parseInt(input);
             console.log(props.whoseAccount.balance);
             setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
-        }  
+        }
     }
     return (
         <div className="deposit-wrapper">
             <form>
                 <label htmlFor={id}>Deposit amount: </label>
-                <input type="number" minLength="1" id={id} value={input} onInput={e => setInput(e.target.value)} />
+                <input type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
                 <button onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
             <div className="new-details">
