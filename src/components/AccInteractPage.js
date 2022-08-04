@@ -3,10 +3,10 @@ import Withdraw from "./Withdraw";
 import Transfer from "./Transfer";
 import { useState, useId } from "react";
 
-import "./AccInteractPage.css"
+import "./AccInteractPage.css";
 
 const AccInteractPage = props => {
-    const [getName, setGetName] = useState('Gek Javier');
+    const [getName, setGetName] = useState('Timothy Coronel');
     const whoseAccount = props.owners.find(item => item.name === getName);
 
     // Input name
@@ -26,16 +26,30 @@ const AccInteractPage = props => {
                 <button onSubmit={searchProfile} onClick={searchProfile}>Submit</button>
             </form>
             <div>{showProfile}</div>
-            <Deposit whoseAccount={whoseAccount} update={props.update} setUpdate={props.setUpdate} />
-            <Withdraw whoseAccount={whoseAccount} update={props.update} setUpdate={props.setUpdate} />
-            <Transfer 
-                whoseAccount={whoseAccount} 
-                owners={props.owners} 
-                update={props.update} 
-                setUpdate={props.setUpdate} 
-                transferUpdate={props.transferUpdate} 
-                setTransferUpdate={props.setTransferUpdate} 
-            />
+            {
+                props.showDeposit?
+                <Deposit whoseAccount={whoseAccount} update={props.update} setUpdate={props.setUpdate} className="deposit-page" />
+                :null
+            }
+            {
+                props.showWithdraw?
+                <Withdraw whoseAccount={whoseAccount} update={props.update} setUpdate={props.setUpdate} />
+                :null
+            }
+            {
+                props.showTransfer?
+                <Transfer 
+                    whoseAccount={whoseAccount} 
+                    owners={props.owners} 
+                    update={props.update} 
+                    setUpdate={props.setUpdate} 
+                    transferUpdate={props.transferUpdate} 
+                    setTransferUpdate={props.setTransferUpdate} 
+                />
+                :null
+            }
+            
+            
         </div>
     )
 }

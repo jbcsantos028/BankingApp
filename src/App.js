@@ -4,6 +4,8 @@ import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
 import AccInteractPage from './components/AccInteractPage';
 
+import "./App.css";
+
 const dummyAccounts = [
   {
     name: "Timothy Coronel",
@@ -49,7 +51,6 @@ if (!localAccounts) {
 function App() {
 
   const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')));
-  const [accounts, setAccounts] = useState(dummyAccounts);
   const [update, setUpdate] = useState('');
   const [transferUpdate, setTransferUpdate] = useState('');
   
@@ -59,12 +60,28 @@ function App() {
     });
   }
 
+  // Button features
+  const [showNewAccForm, setShowNewAccForm] = useState(false);
+  const [showDeposit, setShowDeposit] = useState(false);
+  const [showWithdraw, setShowWithdraw] = useState(false);
+  const [showTransfer, setShowTransfer] = useState(false);
+
   return (
     <div>
-
-      <NewAccount onAddAccount={addAccountHandler} owners={accounts} />
-      <Accounts owners={accounts}/>;
+      <div className="header">
+        <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
+        <div>
+          <button onClick={() => setShowDeposit(!showDeposit)}>Deposit</button>
+          <button onClick={() => setShowWithdraw(!showWithdraw)}>Withdraw</button>
+          <button onClick={() => setShowTransfer(!showTransfer)}>Transfer</button>
+          <button onClick={() => setShowNewAccForm(!showNewAccForm)}>Register</button>
+        </div>
+      </div>
+      <Accounts owners={accounts}/>
       <AccInteractPage 
+        showDeposit={showDeposit}
+        showWithdraw={showWithdraw}
+        showTransfer={showTransfer}
         owners={accounts} 
         update={update} 
         setUpdate={setUpdate} 
