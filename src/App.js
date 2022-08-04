@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
+import AccInteractPage from './components/AccInteractPage';
 
 const dummyAccounts = [
   {
@@ -46,7 +47,11 @@ if (!localAccounts) {
   }
 
 function App() {
+
   const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')));
+  const [accounts, setAccounts] = useState(dummyAccounts);
+  const [update, setUpdate] = useState('');
+  const [transferUpdate, setTransferUpdate] = useState('');
   
   const addAccountHandler = account => {
     setAccounts(prevAccounts => {
@@ -56,8 +61,17 @@ function App() {
 
   return (
     <div>
+
       <NewAccount onAddAccount={addAccountHandler} owners={accounts} />
       <Accounts owners={accounts}/>;
+      <AccInteractPage 
+        owners={accounts} 
+        update={update} 
+        setUpdate={setUpdate} 
+        transferUpdate={transferUpdate} 
+        setTransferUpdate={setTransferUpdate} 
+      />
+
     </div>
   );
 }
