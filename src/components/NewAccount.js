@@ -13,7 +13,7 @@ const NewAccount = (props) => {
 
   return (
     <div className="new-account">
-      <AccountForm onSaveAccountData={saveAccountDateHandler} />
+      <AccountForm onSaveAccountData={saveAccountDateHandler} ownerList={props.owners} />
     </div>
   );
 };
