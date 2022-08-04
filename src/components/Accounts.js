@@ -4,20 +4,25 @@ import Card from "./Card";
 
 const Accounts = (props) => {
   console.log(props.owners);
-
+  localStorage.setItem('accounts', JSON.stringify(props.owners));
   return (
-    <div>
-      <Card className="owners">
-        {props.owners.map((account) => (
-          <AccountOwner
-            name={account.name}
-            balance={account.balance}
-            id={account.id}
-          >
-          </AccountOwner>
-        ))}
+    <Card className="owners">
+      <Card className="header">
+        <div className="header-account__id">Account #</div>
+        <div className="header-account-owner__detail">
+          <h2>Account Name</h2>
+          <div className="header-account-owner__balance">Balance</div>
+        </div>
       </Card>
-    </div>
+      {props.owners.map((account) => (
+        <AccountOwner
+          key={account.id}
+          name={account.name}
+          balance={account.balance}
+          id={account.id}
+        />
+      ))}
+    </Card>
   );
 };
 
