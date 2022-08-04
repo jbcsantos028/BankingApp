@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
-import DepositPage from './components/DepositPage';
+import AccInteractPage from './components/AccInteractPage';
 
 const dummyAccounts = [
   {
@@ -37,6 +37,8 @@ const dummyAccounts = [
 
 function App() {
   const [accounts, setAccounts] = useState(dummyAccounts);
+  const [update, setUpdate] = useState('');
+  const [transferUpdate, setTransferUpdate] = useState('');
   
   const addAccountHandler = account => {
     setAccounts(prevAccounts => {
@@ -48,7 +50,13 @@ function App() {
     <div>
       <NewAccount onAddAccount={addAccountHandler} />
       <Accounts owners={accounts} />
-      <DepositPage owners={accounts} />
+      <AccInteractPage 
+        owners={accounts} 
+        update={update} 
+        setUpdate={setUpdate} 
+        transferUpdate={transferUpdate} 
+        setTransferUpdate={setTransferUpdate} 
+      />
     </div>
   );
 }
