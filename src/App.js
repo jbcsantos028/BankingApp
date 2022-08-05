@@ -70,11 +70,15 @@ function App() {
     <div>
       <div className="header">
         <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
-        <div>
-          <button onClick={() => setShowDeposit(!showDeposit)}>Deposit</button>
-          <button onClick={() => setShowWithdraw(!showWithdraw)}>Withdraw</button>
-          <button onClick={() => setShowTransfer(!showTransfer)}>Transfer</button>
-          <button onClick={() => setShowNewAccForm(!showNewAccForm)}>Register</button>
+        <div className="buttons-wrapper">
+          <div className="button-set">
+            <button onClick={() => setShowDeposit(!showDeposit)} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
+            <button onClick={() => setShowWithdraw(!showWithdraw)} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+          </div>
+          <div className="button-set">
+            <button onClick={() => setShowTransfer(!showTransfer)} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
+            <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
+          </div>
         </div>
       </div>
       <Accounts owners={accounts}/>
