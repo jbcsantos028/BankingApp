@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.header {
+    display: flex;
+}
+.buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.feature-button {
+    height: 60px;
+    width : 130px;
+    text-decoration: none;
+    font-size: 16px;
+    color : #000;
+    margin: 3px;
+}
+
+
+/* Code below for button animation */
+/* .feature-button {
+    text-decoration: none;
+    padding: 20px 50px;
+    font-size: 1.25rem;
+    position: relative;
+    color : #000;
+    margin: 3px;
+} */
+
+/* .feature-button::after, .feature-button::before {
+    border: 3px solid #000;
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+} */
+
+/* transition doesnt seem to work */
+/* so below code dont work */
+/* .feature-button::after {
+    transform: translate(-5px, -5px);
+}
+
+.feature-button::before {
+    transform: translate(5px, 5px);
+} */
