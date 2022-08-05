@@ -1,5 +1,6 @@
 import AccountOwner from "./AccountOwner";
 import "./Accounts.css";
+import AccountsChart from "./AccountsChart";
 import Card from "./Card";
 
 const Accounts = (props) => {
@@ -7,6 +8,7 @@ const Accounts = (props) => {
   localStorage.setItem('accounts', JSON.stringify(props.owners));
   return (
     <Card className="owners">
+      <AccountsChart accounts={props.owners} />
       <Card className="header">
         <div className="header-account__id">Account #</div>
         <div className="header-account-owner__detail">

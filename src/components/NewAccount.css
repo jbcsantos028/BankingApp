@@ -1,5 +1,5 @@
 .new-account {
-  background-color: rgb(248, 219, 162);
+  background-color: #ddb3f8;
   padding: 1rem;
   margin: 2rem auto;
   width: 50rem;
@@ -14,8 +14,8 @@
   font: inherit;
   cursor: pointer;
   padding: 1rem 2rem;
-  border: 1px solid rgb(246, 175, 37);
-  background-color: rgb(246, 175, 37);
+  border: 1px solid #40005d;
+  background-color: #40005d;
   color: white;
   border-radius: 12px;
   margin-right: 1rem;
@@ -23,8 +23,8 @@
 
 .new-account button:hover,
 .new-account button:active {
-  background-color: rgb(246, 175, 37);
-  border-color: rgb(246, 175, 37);
+  background-color: #40005d;
+  border-color: #40005d;
 }
 
 .new-account button.alternative {
@@ -35,5 +35,5 @@
 
 .new-account button.alternative:hover,
 .new-account button.alternative:active {
-  background-color: rgb(248, 219, 162);
+  background-color: #ddb3f8;
 }
