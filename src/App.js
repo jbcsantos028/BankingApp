@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
+import AccInteractPage from './components/AccInteractPage';
+
+import "./App.css";
 
 const dummyAccounts = [
   {
@@ -46,7 +49,10 @@ if (!localAccounts) {
   }
 
 function App() {
+
   const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')));
+  const [update, setUpdate] = useState('');
+  const [transferUpdate, setTransferUpdate] = useState('');
   
   const addAccountHandler = account => {
     setAccounts(prevAccounts => {
@@ -54,10 +60,39 @@ function App() {
     });
   }
 
+  // Button features
+  const [showNewAccForm, setShowNewAccForm] = useState(false);
+  const [showDeposit, setShowDeposit] = useState(false);
+  const [showWithdraw, setShowWithdraw] = useState(false);
+  const [showTransfer, setShowTransfer] = useState(false);
+
   return (
     <div>
-      <NewAccount onAddAccount={addAccountHandler} owners={accounts} />
-      <Accounts owners={accounts}/>;
+      <div className="header">
+        <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
+        <div className="buttons-wrapper">
+          <div className="button-set">
+            <button onClick={() => setShowDeposit(!showDeposit)} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
+            <button onClick={() => setShowWithdraw(!showWithdraw)} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+          </div>
+          <div className="button-set">
+            <button onClick={() => setShowTransfer(!showTransfer)} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
+            <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
+          </div>
+        </div>
+      </div>
+      <Accounts owners={accounts}/>
+      <AccInteractPage 
+        showDeposit={showDeposit}
+        showWithdraw={showWithdraw}
+        showTransfer={showTransfer}
+        owners={accounts} 
+        update={update} 
+        setUpdate={setUpdate} 
+        transferUpdate={transferUpdate} 
+        setTransferUpdate={setTransferUpdate} 
+      />
+
     </div>
   );
 }
