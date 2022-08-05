@@ -48,8 +48,8 @@ const AccountForm = (props) => {
     e.preventDefault();
     if(email.trim().length === 0 || password.trim().length === 0 || name.trim().length === 0 || balance.trim().length === 0) {
       setError({
-        title: 'Empty Fields',
-        message: 'Please enter valid inputs (non-empty values).'
+        title: 'Empty Field/s',
+        message: 'Please enter valid input/s (non-empty values).'
       });
       return;
     }
@@ -62,8 +62,16 @@ const AccountForm = (props) => {
     }
     if (+balance < 0) {
       setError({
-        title: 'Invalid Balance',
+        title: 'Invalid Input',
         message: 'Please enter a valid balance (> 0).'
+      });
+      return;
+    }
+
+    if (getDate(birthdate) === `${NaN}/${NaN}/${NaN}`) {
+      setError({
+        title: 'Empty Field/s',
+        message: 'Please enter valid input/s (non-empty values).'
       });
       return;
     }
@@ -82,7 +90,7 @@ const AccountForm = (props) => {
       email: email,
       password: password,
       name: name,
-      balance: balance,
+      balance: +balance,
       birthdate: getDate(birthdate)
     }
     props.onSaveAccountData(accountData);
