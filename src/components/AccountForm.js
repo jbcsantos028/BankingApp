@@ -76,7 +76,8 @@ const AccountForm = (props) => {
       return;
     }
 
-    const existingAccount = props.ownerList.find(item => item.name === name);
+
+    const existingAccount = props.ownerList.find(item => item.name.toUpperCase() === name.toUpperCase());
 
     if (existingAccount && existingAccount.birthdate === getDate(birthdate)) {
       setError({
