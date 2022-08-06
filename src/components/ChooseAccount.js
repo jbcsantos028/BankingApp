@@ -1,13 +1,13 @@
 const ChooseAccount = props => {
     // At App.js
-    const chosenAccount = props.owners.find(item => item.name === props.getName);
+    const chosenAccount = props.owners.find(item => item.name.toLowerCase() === props.getName.toLowerCase());
     // const [showProfile, setShowProfile] = useState('');
     const searchProfile = (e) => {
         if (props.getName !== '') {
             e.preventDefault();
             console.log(props.getName)
             props.setWhoseAccount(chosenAccount);
-            props.setShowProfile(`Name: ${props.getName}  Balance: ${chosenAccount.balance}`);
+            props.setShowProfile(`Name: ${props.getName.toUpperCase()}  Balance: ${chosenAccount.balance}`);
         }  
     }
 

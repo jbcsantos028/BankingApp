@@ -77,7 +77,21 @@ function App() {
         {
           showNewAccForm ?
           <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
-          : <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
+          : 
+          <div>
+          <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
+          <AccInteractPage 
+            whoseAccount={whoseAccount}
+            showDeposit={showDeposit}
+            showWithdraw={showWithdraw}
+            showTransfer={showTransfer}
+            owners={accounts} 
+            update={update} 
+            setUpdate={setUpdate} 
+            transferUpdate={transferUpdate} 
+            setTransferUpdate={setTransferUpdate} 
+          />
+          </div>
         }
         <div className="buttons-wrapper">
           <div className="button-set">
@@ -91,7 +105,7 @@ function App() {
         </div>
       </div>
       <Accounts owners={accounts}/>
-      <AccInteractPage 
+      {/* <AccInteractPage 
         whoseAccount={whoseAccount}
         showDeposit={showDeposit}
         showWithdraw={showWithdraw}
@@ -101,7 +115,7 @@ function App() {
         setUpdate={setUpdate} 
         transferUpdate={transferUpdate} 
         setTransferUpdate={setTransferUpdate} 
-      />
+      /> */}
 
     </div>
   );
