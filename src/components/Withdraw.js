@@ -7,9 +7,9 @@ const Withdraw = props => {
     const [input, setInput] = useState('');
     const showAmount = (e) => {
         e.preventDefault();
-        if (input !== '' && input < props.whoseAccount.balance) {
+        if (input !== '' && input < props.whoseAccount.balance && input > 0) {
             const previousBalance = props.whoseAccount.balance;
-            props.whoseAccount.balance = parseInt(props.whoseAccount.balance) - parseInt(input);
+            props.whoseAccount.balance = Number(props.whoseAccount.balance) - Number(input);
             props.setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
         } else {
             props.setUpdate(`Invalid transaction`)
