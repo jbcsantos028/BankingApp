@@ -1,3 +1,5 @@
+import './ChooseAccount.css'
+
 const ChooseAccount = props => {
     // At App.js
     const chosenAccount = props.owners.find(item => item.name.toLowerCase() === props.getName.toLowerCase());
@@ -14,11 +16,11 @@ const ChooseAccount = props => {
     return (
         <div>
             <form>
-                <label>Enter name of account: </label>
+                <label className="choose-account__label">Enter name of account: </label>
                 <input type="text" value={props.getName} onInput={e => props.setGetName(e.target.value)} />
                 <button onSubmit={searchProfile} onClick={searchProfile}>Submit</button>
             </form>
-            <div>{props.showProfile}</div>
+            <div className="choose-account__label">{props.showProfile}</div>
         </div>
         
     )
