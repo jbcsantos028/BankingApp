@@ -7,6 +7,8 @@ const Deposit = props => {
     const [input, setInput] = useState('');
     const showAmount = (e) => {
         e.preventDefault();
+        props.setShowResult(true);
+
         if (input !== '' && input < props.whoseAccount.balance && input > 0) {
             const previousBalance = props.whoseAccount.balance; 
             props.whoseAccount.balance = Number(props.whoseAccount.balance) + Number(input);
@@ -22,9 +24,13 @@ const Deposit = props => {
                 <input type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
                 <button onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
-            <div className="new-details">
-                <div className="new-amount">{props.update}</div>
-            </div>
+            {
+                props.showResult ?
+                <div className="new-details">
+                    <div className="new-amount">{props.update}</div>
+                </div>
+                : null
+            }
         </div>
     )
 }
