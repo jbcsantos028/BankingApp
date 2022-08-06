@@ -18,6 +18,7 @@ const AccInteractPage = props => {
     //         setShowProfile(`Name: ${getName}  Balance: ${whoseAccount.balance}`);
     //     }  
     // }
+
     return (
         <div className="account-interact-page">
             {/*<form>
@@ -28,12 +29,12 @@ const AccInteractPage = props => {
     <div>{showProfile}</div>*/}
             {
                 props.showDeposit?
-                <Deposit whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} className="deposit-page" />
+                <Deposit whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} className="deposit-page" showResult={props.showResult} setShowResult={props.setShowResult} />
                 :null
             }
             {
                 props.showWithdraw?
-                <Withdraw whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} />
+                <Withdraw whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} showResult={props.showResult} setShowResult={props.setShowResult} />
                 :null
             }
             {
@@ -45,6 +46,8 @@ const AccInteractPage = props => {
                     setUpdate={props.setUpdate} 
                     transferUpdate={props.transferUpdate} 
                     setTransferUpdate={props.setTransferUpdate} 
+                    showResult={props.showResult}
+                    setShowResult={props.setShowResult}
                 />
                 :null
             }

@@ -63,13 +63,27 @@ function App() {
   // Choose Acc
   const [whoseAccount, setWhoseAccount] = useState('');
   const [showProfile, setShowProfile] = useState('');
-  const [getName, setGetName] = useState('Timothy Coronel');
+  const [getName, setGetName] = useState('');
 
   // Button features
   const [showNewAccForm, setShowNewAccForm] = useState(false);
   const [showDeposit, setShowDeposit] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
   const [showTransfer, setShowTransfer] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+
+  const showClick = (whichButton) => {
+    setShowResult(false);
+    if (whichButton === 'deposit') {
+      setShowDeposit(!showDeposit);
+      setUpdate('');
+    } else if (whichButton === 'withdraw') {
+      setShowWithdraw(!showWithdraw);
+    } else if (whichButton === 'transfer') {
+      setShowTransfer(!showTransfer);
+      setUpdate('');
+    }
+  }
 
   return (
     <div>
@@ -90,16 +104,18 @@ function App() {
             setUpdate={setUpdate} 
             transferUpdate={transferUpdate} 
             setTransferUpdate={setTransferUpdate} 
+            showResult={showResult}
+            setShowResult={setShowResult}
           />
           </div>
         }
         <div className="buttons-wrapper">
           <div className="button-set">
-            <button onClick={() => setShowDeposit(!showDeposit)} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
-            <button onClick={() => setShowWithdraw(!showWithdraw)} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+            <button onClick={() => showClick('deposit')} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
+            <button onClick={() => showClick('withdraw')} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
           </div>
           <div className="button-set">
-            <button onClick={() => setShowTransfer(!showTransfer)} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
+            <button onClick={() => showClick('transfer')} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
             <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
           </div>
         </div>
