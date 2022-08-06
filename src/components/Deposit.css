@@ -1,9 +1,9 @@
 .deposit-wrapper {
     width: 800px;
     height: 100%;
-    border: 2px solid #ffa31a;
+    border: 2px solid #ddb3f8;
     border-radius: 10px;
-    background-color: #ffa31a;
+    background-color: #ddb3f8;
 
     display: flex;
     flex-direction: column;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './ChooseAccount.css'
 
 const ChooseAccount = props => {
     const [isShown, setIsShown] = useState(true);
@@ -18,16 +19,16 @@ const ChooseAccount = props => {
             {
                 isShown ?
                 <form>
-                    <label>Enter name of account: </label>
+                    <label className="choose-account__label">Enter name of account: </label>
                     <input type="text" value={props.getName} onInput={e => props.setGetName(e.target.value)} />
                     <button onSubmit={searchProfile} onClick={searchProfile}>Submit</button>
                 </form>
                 :
                 <div>
-                    <div>{props.showProfile}</div>
+                    <div className="choose-account__label">{props.showProfile}</div>
                     <button onClick={() => setIsShown(true)}>Change Account</button>
                 </div>
-        }
+            }
         </div>
         
     )

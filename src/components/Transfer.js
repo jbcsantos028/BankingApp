@@ -1,5 +1,5 @@
 import { useId, useState } from 'react';
-import Swal from 'sweetalert2';
+
 
 import "./Deposit.css";
 
@@ -24,6 +24,7 @@ const Transfer = props => {
             //Swal
             Swal.fire(`Edi nice`, `Such wow to you`, 'success');
             props.setTransferUpdate(`The Taker: ${receiver.name.toUpperCase()} ; Old: ${receiverPreviousBalance} ; New: ${receiver.balance}`);
+
         } else if (receiverAccount === props.whoseAccount.name) {
             props.setUpdate(`Invalid receiver`);
         } else {
