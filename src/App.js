@@ -78,7 +78,7 @@ function App() {
 
   return (
     <div>
-      <div className="header">
+      <div className="header-main">
         {
           showNewAccForm ?
           <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
