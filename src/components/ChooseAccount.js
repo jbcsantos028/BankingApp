@@ -5,8 +5,12 @@ const ChooseAccount = props => {
     const [isShown, setIsShown] = useState(true);
     const chosenAccount = props.owners.find(item => item.name.toLowerCase() === props.getName.toLowerCase());
     const searchProfile = (e) => {
+        e.preventDefault();
+        if (!chosenAccount) {
+            console.log('Account not existing');
+            return;
+        }
         if (props.getName !== '') {
-            e.preventDefault();
             setIsShown(false);
             console.log(props.getName)
             props.setWhoseAccount(chosenAccount);

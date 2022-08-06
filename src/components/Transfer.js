@@ -14,6 +14,7 @@ const Transfer = props => {
         const receiver = props.owners.find(item => item.name.toLowerCase() === receiverAccount.toLowerCase());
         const receiverPreviousBalance = receiver.balance;
 
+
         props.setShowResult(true);
         
         if (inputAmount !== '' && inputAmount < props.whoseAccount.balance && inputAmount > 0 && receiverAccount !== props.whoseAccount.name) {    
@@ -22,7 +23,7 @@ const Transfer = props => {
             props.setUpdate(`The Giver: ${props.whoseAccount.name.toUpperCase()} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
             
             //Swal
-            Swal.fire(`Edi nice`, `Such wow to you`, 'success');
+            
             props.setTransferUpdate(`The Taker: ${receiver.name.toUpperCase()} ; Old: ${receiverPreviousBalance} ; New: ${receiver.balance}`);
 
         } else if (receiverAccount === props.whoseAccount.name) {
