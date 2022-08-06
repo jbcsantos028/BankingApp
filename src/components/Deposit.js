@@ -6,14 +6,13 @@ const Deposit = props => {
     const id = useId();
     const [input, setInput] = useState('');
     const showAmount = (e) => {
-        if (input !== '') {
-            e.preventDefault();
+        e.preventDefault();
+        if (input !== '' && input < props.whoseAccount.balance && input > 0) {
             const previousBalance = props.whoseAccount.balance; 
-            console.log(props.whoseAccount.balance)
-            props.whoseAccount.balance = parseInt(props.whoseAccount.balance) + parseInt(input);
-            console.log(props.whoseAccount.balance);
-            console.log(props.whoseAccount);
+            props.whoseAccount.balance = Number(props.whoseAccount.balance) + Number(input);
             props.setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
+        } else {
+            props.setUpdate(`Invalid transaction`);
         }
     }
     return (

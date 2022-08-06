@@ -5,6 +5,7 @@ import NewAccount from "./components/NewAccount";
 import AccInteractPage from './components/AccInteractPage';
 
 import "./App.css";
+import ChooseAccount from './components/ChooseAccount';
 
 const dummyAccounts = [
   {
@@ -59,6 +60,10 @@ function App() {
       return [account, ...prevAccounts];
     });
   }
+  // Choose Acc
+  const [whoseAccount, setWhoseAccount] = useState('');
+  const [showProfile, setShowProfile] = useState('');
+  const [getName, setGetName] = useState('Timothy Coronel');
 
   // Button features
   const [showNewAccForm, setShowNewAccForm] = useState(false);
@@ -69,7 +74,11 @@ function App() {
   return (
     <div>
       <div className="header">
-        <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
+        {
+          showNewAccForm ?
+          <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
+          : <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
+        }
         <div className="buttons-wrapper">
           <div className="button-set">
             <button onClick={() => setShowDeposit(!showDeposit)} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
@@ -83,6 +92,7 @@ function App() {
       </div>
       <Accounts owners={accounts}/>
       <AccInteractPage 
+        whoseAccount={whoseAccount}
         showDeposit={showDeposit}
         showWithdraw={showWithdraw}
         showTransfer={showTransfer}

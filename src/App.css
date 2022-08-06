@@ -28,22 +28,23 @@
     position: relative;
     color : #000;
     margin: 3px;
-} */
+    transition: 0.3s ease;
+}
 
-/* .feature-button::after, .feature-button::before {
+.feature-button:hover {
     border: 3px solid #000;
     content: "";
-    position: absolute;
+    transform: scale(1.05);
     width: calc(100% - 6px);
     height: calc(100% - 6px);
     left: 0;
     bottom: 0;
     z-index: -1;
-    transition: transform 0.3s ease;
-} */
+}
+*/
 
-/* transition doesnt seem to work */
-/* so below code dont work */
+/* transition doesnt seem to work
+so below code dont work */
 /* .feature-button::after {
     transform: translate(-5px, -5px);
 }
