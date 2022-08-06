@@ -71,6 +71,11 @@ function App() {
   const [showWithdraw, setShowWithdraw] = useState(false);
   const [showTransfer, setShowTransfer] = useState(false);
 
+  const showClick = () => {
+    setShowDeposit(!showDeposit);
+    setUpdate('');
+  }
+
   return (
     <div>
       <div className="header">
@@ -95,7 +100,7 @@ function App() {
         }
         <div className="buttons-wrapper">
           <div className="button-set">
-            <button onClick={() => setShowDeposit(!showDeposit)} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
+            <button onClick={showClick} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
             <button onClick={() => setShowWithdraw(!showWithdraw)} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
           </div>
           <div className="button-set">
