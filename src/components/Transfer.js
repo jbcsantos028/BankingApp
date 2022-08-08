@@ -15,7 +15,7 @@ const Transfer = props => {
         const receiver = props.owners.find(item => item.name.toLowerCase() === receiverAccount.toLowerCase());
         if (!receiver) {
             setError({
-                title: 'Recepient does not exist',
+                title: 'Recipient does not exist',
                 message: 'Please enter an existing account name.'
               });
               return;
@@ -49,7 +49,7 @@ const Transfer = props => {
         <div className="deposit-wrapper">
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <form>
-                <label className="deposit-label">Recepient name:   </label>
+                <label className="deposit-label">Recipient name:   </label>
                 <input className="deposit-input2" type="text" onInput={e => setReceiverAccount(e.target.value)} />
                 <label className="deposit-label" htmlFor={id}>Transfer amount:   </label>
                 <input className="deposit-input2" type="text" id={id} onInput={e => setInputAmount(e.target.value)} />

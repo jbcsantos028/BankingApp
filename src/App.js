@@ -137,18 +137,6 @@ function App() {
         </div>
       </div>
       <Accounts owners={accounts}/>
-      {/* <AccInteractPage 
-        whoseAccount={whoseAccount}
-        showDeposit={showDeposit}
-        showWithdraw={showWithdraw}
-        showTransfer={showTransfer}
-        owners={accounts} 
-        update={update} 
-        setUpdate={setUpdate} 
-        transferUpdate={transferUpdate} 
-        setTransferUpdate={setTransferUpdate} 
-      /> */}
-
     </div>
   );
 }
