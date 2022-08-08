@@ -1,0 +1,53 @@
+.deposit-wrapper {
+    width: 800px;
+    height: 100%;
+    border: 2px solid #ddb3f8;
+    border-radius: 10px;
+    background-color: #ddb3f8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new-details {
+    width: 400px;
+    color: white;
+    border: 2px solid #292929;
+    border-radius: 5px;
+    background-color: #292929;
+}
+
+.deposit-label {
+    color: black;
+    font-weight: bold;
+    margin-right: 0.3rem;
+}
+
+.deposit-input {
+    padding: 0.3rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 15rem;
+    max-width: 100%;
+    margin-right: 0.5rem;
+}
+
+.deposit-btn {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.3rem 1.5rem;
+    border: 1px solid #40005d;
+    background-color: #40005d;
+    color: white;
+    border-radius: 5px;
+}
+
+.deposit-input2 {
+    padding: 0.3rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 10rem;
+    max-width: 100%;
+    margin-right: 0.5rem;
+}

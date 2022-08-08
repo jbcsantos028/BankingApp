@@ -1,0 +1,42 @@
+.choose-account__label {
+  color: white;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+.choose-account__input {
+  padding: 0.3rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  width: 15rem;
+  max-width: 100%;
+  margin-right: 0.5rem;
+}
+
+.choose-account__btn {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.3rem 1.5rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 5px;
+}
+
+.choose-account__btn2 {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.3rem 1.5rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+
+.new-account button:hover,
+.new-account button:active {
+  background-color: #40005d;
+  border-color: #40005d;
+}
+

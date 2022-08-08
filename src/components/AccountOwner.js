@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './AccountOwner.css';
 import Card from "./Card";
 
 const AccountOwner = (props) => {
-  
   return (
     <Card className="account-owner">
       <div className="account-id">{props.id}</div>

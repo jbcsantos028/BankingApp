@@ -1,32 +1,31 @@
 import AccountOwner from "./AccountOwner";
-import './Accounts.css';
+import "./Accounts.css";
+import AccountsChart from "./AccountsChart";
 import Card from "./Card";
 
 const Accounts = (props) => {
+  console.log(props.owners);
+  localStorage.setItem('accounts', JSON.stringify(props.owners));
   return (
     <Card className="owners">
-      <AccountOwner
-        name={props.owners[0].name}
-        balance={props.owners[0].balance}
-        id={props.owners[0].id}
-      />
-      <AccountOwner
-        name={props.owners[1].name}
-        balance={props.owners[1].balance}
-        id={props.owners[1].id}
-      />
-      <AccountOwner
-        name={props.owners[2].name}
-        balance={props.owners[2].balance}
-        id={props.owners[2].id}
-      />
-      <AccountOwner
-        name={props.owners[3].name}
-        balance={props.owners[3].balance}
-        id={props.owners[3].id}
-      />
+      <AccountsChart accounts={props.owners} />
+      <Card className="header">
+        <div className="header-account__id">Account #</div>
+        <div className="header-account-owner__detail">
+          <h2>Account Name</h2>
+          <div className="header-account-owner__balance">Balance</div>
+        </div>
+      </Card>
+      {props.owners.map((account) => (
+        <AccountOwner
+          key={account.id}
+          name={account.name}
+          balance={account.balance}
+          id={account.id}
+        />
+      ))}
     </Card>
   );
-}
+};
 
 export default Accounts;
