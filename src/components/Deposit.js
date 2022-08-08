@@ -9,7 +9,7 @@ const Deposit = props => {
         e.preventDefault();
         props.setShowResult(true);
 
-        if (input !== '' && input < props.whoseAccount.balance && input > 0) {
+        if (input !== '' && input > 0) {
             const previousBalance = props.whoseAccount.balance; 
             props.whoseAccount.balance = Number(props.whoseAccount.balance) + Number(input);
             props.setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
