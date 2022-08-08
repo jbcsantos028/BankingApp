@@ -20,9 +20,9 @@ const Withdraw = props => {
     return (
         <div className="deposit-wrapper">
             <form>
-                <label htmlFor={id}>Withdraw amount: </label>
-                <input type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
-                <button onSubmit={showAmount} onClick={showAmount}>Submit</button>
+                <label className="deposit-label" htmlFor={id}>Withdraw amount: </label>
+                <input className="deposit-input" type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
+                <button className="deposit-btn" onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
             {
                 props.showResult ?
