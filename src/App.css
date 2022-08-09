@@ -64,3 +64,11 @@
 .feature-button:hover::after {
     opacity: 1;
 }
+
+body {
+    background-image: url("./bg_2.jpg");
+    background-color: #3f3f3f;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:auto;
+}
