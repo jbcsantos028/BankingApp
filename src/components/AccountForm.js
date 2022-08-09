@@ -112,7 +112,7 @@ const AccountForm = (props) => {
 
   return (
     <div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.ownerList} />}
       <form onSubmit={submitHandler}>
         <div className="new-account__controls">
           <div className="new-account__control">

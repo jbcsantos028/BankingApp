@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
@@ -103,40 +104,44 @@ function App() {
 
   return (
     <div>
-      <div className="header-main">
-        {
-          showNewAccForm ?
-          <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
-          :
-          <div>
-          <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} setShowDeposit={setShowDeposit} setShowWithdraw={setShowWithdraw} setShowTransfer={setShowTransfer} />
-          <AccInteractPage 
-            whoseAccount={whoseAccount}
-            showDeposit={showDeposit}
-            showWithdraw={showWithdraw}
-            showTransfer={showTransfer}
-            owners={accounts} 
-            update={update} 
-            setUpdate={setUpdate} 
-            transferUpdate={transferUpdate} 
-            setTransferUpdate={setTransferUpdate} 
-            showResult={showResult}
-            setShowResult={setShowResult}
-          />
-          </div>
-        }
-        <div className="buttons-wrapper">
-          <div className="button-set">
-            <button onClick={() => showClick('deposit')} className="feature-button">Deposit</button>
-            <button onClick={() => showClick('withdraw')} className="feature-button">Withdraw</button>
-          </div>
-          <div className="button-set">
-            <button onClick={() => showClick('transfer')} className="feature-button">Transfer</button>
-            <button onClick={() => showClick('register')} className="feature-button">Register</button>
+      <Route path="/main">
+        <div className="header-main">
+          {
+            showNewAccForm ?
+            <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
+            : 
+            <div>
+              <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
+              <AccInteractPage 
+                whoseAccount={whoseAccount}
+                showDeposit={showDeposit}
+                showWithdraw={showWithdraw}
+                showTransfer={showTransfer}
+                owners={accounts} 
+                update={update} 
+                setUpdate={setUpdate} 
+                transferUpdate={transferUpdate} 
+                setTransferUpdate={setTransferUpdate} 
+                showResult={showResult}
+                setShowResult={setShowResult}
+              />
+            </div>
+          }
+          <div className="buttons-wrapper">
+            <div className="button-set">
+              <button onClick={() => showClick('deposit')} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
+              <button onClick={() => showClick('withdraw')} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+            </div>
+            <div className="button-set">
+              <button onClick={() => showClick('transfer')} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
+              <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
+            </div>
           </div>
         </div>
-      </div>
-      <Accounts owners={accounts}/>
+      </Route>
+      <Route path="/accounts">
+        <Accounts owners={accounts}/>
+      </Route>
     </div>
   );
 }

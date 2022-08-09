@@ -5,6 +5,7 @@ import ErrorModal from "./ErrorModal";
 const ChooseAccount = props => {
     const [isShown, setIsShown] = useState(true);
     const [error, setError] = useState();
+
     const chosenAccount = props.owners.find(item => item.name.toLowerCase() === props.getName.toLowerCase());
     const searchProfile = (e) => {
         e.preventDefault();

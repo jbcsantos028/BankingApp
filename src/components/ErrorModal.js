@@ -4,6 +4,8 @@ import './ErrorModal.css';
 import Card from './Card';
 
 const ErrorModal = (props) => {
+  console.log(props.accountList);
+  localStorage.setItem('accounts', JSON.stringify(props.accountList));
   return (
   <div>
     <div className="error-backdrop" onClick={props.onConfirm} />
