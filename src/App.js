@@ -77,11 +77,27 @@ function App() {
     setShowResult(false);
     if (whichButton === 'deposit') {
       setShowDeposit(!showDeposit);
+      setShowWithdraw(false);
+      setShowTransfer(false);
+      setShowNewAccForm(false);
       setUpdate('');
     } else if (whichButton === 'withdraw') {
+      setShowDeposit(false);
       setShowWithdraw(!showWithdraw);
+      setShowTransfer(false);
+      setShowNewAccForm(false);
+      setUpdate('');
     } else if (whichButton === 'transfer') {
+      setShowDeposit(false);
+      setShowWithdraw(false);
       setShowTransfer(!showTransfer);
+      setShowNewAccForm(false);
+      setUpdate('');
+    } else if (whichButton === 'register') {
+      setShowDeposit(false);
+      setShowWithdraw(false);
+      setShowTransfer(false);
+      setShowNewAccForm(!showNewAccForm);
       setUpdate('');
     }
   }

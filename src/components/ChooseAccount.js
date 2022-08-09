@@ -21,7 +21,15 @@ const ChooseAccount = props => {
             console.log(props.getName)
             props.setWhoseAccount(chosenAccount);
             props.setShowProfile(`Name: ${props.getName.toUpperCase()}  Balance: ${chosenAccount.balance}`);
+            
         }  
+    }
+
+    const displayChange = () => {
+        setIsShown(true);
+        props.setShowDeposit(false);
+        props.setShowWithdraw(false);
+        props.setShowTransfer(false);
     }
 
     const errorHandler = () => {
@@ -40,7 +48,7 @@ const ChooseAccount = props => {
                 </form>
                 :
                 <div>
-                    <div className="choose-account__label">{props.showProfile}<button className="choose-account__btn2" onClick={() => setIsShown(true)}>Change Account</button></div>
+                    <div className="choose-account__label">{props.showProfile}<button className="choose-account__btn2" onClick={displayChange}>Change Account</button></div>
                 </div>
             }
         </div>
