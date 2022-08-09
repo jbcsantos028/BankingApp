@@ -52,7 +52,7 @@ if (!localAccounts) {
 
 function App() {
 
-  const [accounts, setAccounts] = useState(JSON.parse(localStorage.getItem('accounts')));
+  const [accounts, setAccounts] = useState(localAccounts);
   const [update, setUpdate] = useState('');
   const [transferUpdate, setTransferUpdate] = useState('');
   

@@ -14,7 +14,7 @@ const ChooseAccount = props => {
                 title: 'User does not exist',
                 message: 'Please enter an existing account name.'
               });
-              return;
+                return;
         }
         if (props.getName !== '') {
             setIsShown(false);
@@ -38,7 +38,7 @@ const ChooseAccount = props => {
 
     return (
         <div>
-            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.owners} />}
             {
                 isShown ?
                 <form>
