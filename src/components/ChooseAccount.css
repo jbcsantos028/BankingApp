@@ -16,9 +16,9 @@
 .choose-account__btn {
   font: inherit;
   cursor: pointer;
-  padding: 0.3rem 1.5rem;
-  border: 1px solid #40005d;
-  background-color: #40005d;
+  padding: 0.2rem 1.5rem;
+  border: 1px solid #4826b9;
+  background-color: #4826b9;
   color: white;
   border-radius: 5px;
 }

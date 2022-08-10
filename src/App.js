@@ -4,9 +4,16 @@ import { Route } from 'react-router-dom';
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
 import AccInteractPage from './components/AccInteractPage';
+import ChooseAccount from './components/ChooseAccount';
+import LoginForm from './components/LoginPage';
+import MainNavigation from './components/MainNavigation';
 
 import "./App.css";
-import ChooseAccount from './components/ChooseAccount';
+
+const adminUser = {
+  email: "admin@admin.com",
+  password: "admin123"
+}
 
 const dummyAccounts = [
   {
@@ -104,7 +111,14 @@ function App() {
 
   return (
     <div>
-      <Route path="/main">
+      <Route path="/" exact>
+        <header className="login-header"><div>ShawnPH Bank</div></header>
+        <div className="login">
+          <LoginForm authentication={adminUser}/>
+        </div>
+      </Route>
+      <Route path="/transactions">
+        <MainNavigation />
         <div className="header-main">
           {
             showNewAccForm ?
@@ -140,6 +154,7 @@ function App() {
         </div>
       </Route>
       <Route path="/accounts">
+        <MainNavigation />
         <Accounts owners={accounts}/>
       </Route>
     </div>
