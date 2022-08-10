@@ -124,7 +124,7 @@ function App() {
             showNewAccForm ?
             <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
             : 
-            <div>
+            <div className='acc-interact-wrapper'>
               <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
               <AccInteractPage 
                 whoseAccount={whoseAccount}
@@ -143,12 +143,12 @@ function App() {
           }
           <div className="buttons-wrapper">
             <div className="button-set">
-              <button onClick={() => showClick('deposit')} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
-              <button onClick={() => showClick('withdraw')} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+              <button onClick={() => showClick('deposit')} className="feature-button">Deposit</button>
+              <button onClick={() => showClick('withdraw')} className="feature-button">Withdraw</button>
             </div>
             <div className="button-set">
-              <button onClick={() => showClick('transfer')} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
-              <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
+              <button onClick={() => showClick('transfer')} className="feature-button">Transfer</button>
+              <button onClick={() => setShowNewAccForm(!showNewAccForm)} className="feature-button">Register</button>
             </div>
           </div>
         </div>

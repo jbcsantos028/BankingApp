@@ -1,5 +1,5 @@
 .deposit-wrapper {
-    width: 800px;
+    width: 100%;
     height: 100%;
     border: 2px solid #ddb3f8;
     border-radius: 10px;
@@ -7,17 +7,31 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+.input-wrapper button {
+    margin-top: 0.5rem;
 }
 .new-details {
     width: 450px;
+    height: 55px;
+    margin-top: 8px;
     color: white;
     font-size: 15px;
     border: 2px solid #292929;
     border-radius: 5px;
     background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+/* .new-amount {
+    height: 50%;
+    justify-content: center;
+    align-content: center;
+} */
 
 .deposit-label {
     color: black;

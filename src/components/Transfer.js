@@ -59,11 +59,13 @@ const Transfer = props => {
     return (
         <div className="deposit-wrapper">
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.owners}/>}
-            <form>
-                <label className="deposit-label">Recipient name:   </label>
-                <input className="deposit-input2" type="text" onInput={e => setReceiverAccount(e.target.value)} />
-                <label className="deposit-label" htmlFor={id}>Transfer amount:   </label>
-                <input className="deposit-input2" type="text" id={id} onInput={e => setInputAmount(e.target.value)} />
+            <form className="input-wrapper">
+                <div>
+                    <label className="deposit-label">Recipient name:   </label>
+                    <input className="deposit-input2" type="text" onInput={e => setReceiverAccount(e.target.value)} />
+                    <label className="deposit-label" htmlFor={id}>Transfer amount:   </label>
+                    <input className="deposit-input2" type="text" id={id} onInput={e => setInputAmount(e.target.value)} />
+                </div>
                 <button className="deposit-btn" onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
             {

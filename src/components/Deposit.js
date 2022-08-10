@@ -36,9 +36,11 @@ const Deposit = props => {
     return (
         <div className="deposit-wrapper">
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.owners}/>}
-            <form>
-                <label className="deposit-label" htmlFor={id}>Deposit amount: </label>
-                <input className="deposit-input" type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
+            <form className='input-wrapper'>
+                <div>
+                    <label className="deposit-label" htmlFor={id}>Deposit amount: </label>
+                    <input className="deposit-input" type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
+                </div>
                 <button className="deposit-btn" onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
             {

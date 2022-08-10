@@ -41,14 +41,16 @@ const ChooseAccount = props => {
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.owners} />}
             {
                 isShown ?
-                <form>
-                    <label className="choose-account__label">Enter name of account: </label>
-                    <input className="choose-account__input" type="text" value={props.getName} onInput={e => props.setGetName(e.target.value)} />
+                <form className="input-wrapper">
+                    <div>
+                        <label className="choose-account__label">Enter name of account: </label>
+                        <input className="choose-account__input" type="text" value={props.getName} onInput={e => props.setGetName(e.target.value)} />
+                    </div>
                     <button className="choose-account__btn" onSubmit={searchProfile} onClick={searchProfile}>Submit</button>
                 </form>
                 :
                 <div>
-                    <div className="choose-account__label">{props.showProfile}<button className="choose-account__btn2" onClick={displayChange}>Change Account</button></div>
+                    <div className="choose-account__label">{props.showProfile}</div><button className="choose-account__btn2" onClick={displayChange}>Change Account</button>
                 </div>
             }
         </div>
