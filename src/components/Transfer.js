@@ -29,9 +29,6 @@ const Transfer = props => {
             props.whoseAccount.balance = Number(props.whoseAccount.balance) - Number(inputAmount);
             receiver.balance = Number(receiverPreviousBalance) + Number(inputAmount);
             props.setUpdate(`The Giver: ${props.whoseAccount.name.toUpperCase()} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
-            
-            //Swal
-            
             props.setTransferUpdate(`The Taker: ${receiver.name.toUpperCase()} ; Old: ${receiverPreviousBalance} ; New: ${receiver.balance}`);
             setError({
                 title: 'Confirmation Message',

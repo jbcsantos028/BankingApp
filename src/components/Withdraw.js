@@ -17,7 +17,7 @@ const Withdraw = props => {
             props.setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
             setError({
                 title: 'Confirmation Message',
-                message: 'Deposit successful.'
+                message: 'Withdraw successful.'
               });
         } else {
             props.setUpdate(`Invalid transaction`)
@@ -39,7 +39,7 @@ const Withdraw = props => {
             <form className="input-wrapper">
                 <div>
                     <label className="deposit-label" htmlFor={id}>Withdraw amount: </label>
-                    <input className="deposit-input" type="number" id={id} value={input} onInput={e => setInput(e.target.value)} />
+                    <input className="deposit-input" type="text" id={id} value={input} onInput={e => setInput(e.target.value)} />
                 </div>
                 <button className="deposit-btn" onSubmit={showAmount} onClick={showAmount}>Submit</button>
             </form>
