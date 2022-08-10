@@ -29,12 +29,12 @@ const AccInteractPage = props => {
     <div>{showProfile}</div>*/}
             {
                 props.showDeposit?
-                <Deposit whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} className="deposit-page" showResult={props.showResult} setShowResult={props.setShowResult} />
+                <Deposit whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} className="deposit-page" showResult={props.showResult} setShowResult={props.setShowResult} owners={props.owners} />
                 :null
             }
             {
                 props.showWithdraw?
-                <Withdraw whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} showResult={props.showResult} setShowResult={props.setShowResult} />
+                <Withdraw whoseAccount={props.whoseAccount} update={props.update} setUpdate={props.setUpdate} showResult={props.showResult} setShowResult={props.setShowResult} owners={props.owners}/>
                 :null
             }
             {

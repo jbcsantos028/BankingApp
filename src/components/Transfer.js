@@ -33,11 +33,22 @@ const Transfer = props => {
             //Swal
             
             props.setTransferUpdate(`The Taker: ${receiver.name.toUpperCase()} ; Old: ${receiverPreviousBalance} ; New: ${receiver.balance}`);
-
+            setError({
+                title: 'Confirmation Message',
+                message: 'Transfer successful.'
+              });
         } else if (receiverAccount === props.whoseAccount.name) {
             props.setUpdate(`Invalid receiver`);
+            setError({
+                title: 'Invalid receiver',
+                message: 'Invalid receiver.'
+              });
         } else {
             props.setUpdate(`Invalid amount`);
+            setError({
+                title: 'Invalid amount',
+                message: 'Invalid amount.'
+              });
         }
     }
 
@@ -47,7 +58,7 @@ const Transfer = props => {
 
     return (
         <div className="deposit-wrapper">
-            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} accountList={props.owners}/>}
             <form>
                 <label className="deposit-label">Recipient name:   </label>
                 <input className="deposit-input2" type="text" onInput={e => setReceiverAccount(e.target.value)} />
