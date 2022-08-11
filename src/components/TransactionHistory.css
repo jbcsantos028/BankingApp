@@ -1,0 +1,21 @@
+.transaction-history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transaction-history-list {
+    width: 60%;
+}
+
+.transaction-history-item-types {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.transaction-history-list ul {
+    list-style-type: none;
+}

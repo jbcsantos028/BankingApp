@@ -1,5 +1,5 @@
 .choose-account__label {
-  color: white;
+  color: black;
   font-weight: bold;
   margin-right: 0.3rem;
 }
@@ -32,6 +32,7 @@
   color: white;
   border-radius: 5px;
   margin-left: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .new-account button:hover,
@@ -39,4 +40,3 @@
   background-color: #40005d;
   border-color: #40005d;
 }
-

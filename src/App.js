@@ -10,6 +10,7 @@ import MainNavigation from './components/MainNavigation';
 import BudgetAppHome from './components/BudgetAppHome';
 
 import "./App.css";
+import { TransactionHistory } from './components/TransactionHistory';
 
 const adminUser = {
   email: "admin@admin.com",
@@ -23,7 +24,21 @@ const dummyAccounts = [
     birthdate: "6/8/1990",
     id: 75053,
     email: "timothy@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    history: [
+      {
+        transactionType: "deposit",
+        amount: 10000
+      },
+      {
+        transactionType: "withdraw",
+        amount: 3000
+      },
+      {
+        transactionType: "transfer",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Pao Landicho",
@@ -128,7 +143,7 @@ function App() {
             showNewAccForm ?
             <NewAccount onAddAccount={addAccountHandler} owners={accounts} showNewAccForm={showNewAccForm} />
             : 
-            <div>
+            <div className='acc-interact-wrapper'>
               <ChooseAccount  showProfile={showProfile} setShowProfile={setShowProfile} getName={getName} setGetName={setGetName} owners={accounts} whoseAccount={whoseAccount} setWhoseAccount={setWhoseAccount} />
               <AccInteractPage 
                 whoseAccount={whoseAccount}
@@ -147,12 +162,12 @@ function App() {
           }
           <div className="buttons-wrapper">
             <div className="button-set">
-              <button onClick={() => showClick('deposit')} disabled={showWithdraw || showTransfer || showNewAccForm ? true : false} className="feature-button">Deposit</button>
-              <button onClick={() => showClick('withdraw')} disabled={showDeposit || showTransfer || showNewAccForm ? true : false} className="feature-button">Withdraw</button>
+              <button onClick={() => showClick('deposit')} className="feature-button">Deposit</button>
+              <button onClick={() => showClick('withdraw')} className="feature-button">Withdraw</button>
             </div>
             <div className="button-set">
-              <button onClick={() => showClick('transfer')} disabled={showDeposit || showWithdraw || showNewAccForm ? true : false} className="feature-button">Transfer</button>
-              <button onClick={() => setShowNewAccForm(!showNewAccForm)} disabled={showDeposit || showWithdraw || showTransfer ? true : false} className="feature-button">Register</button>
+              <button onClick={() => showClick('transfer')} className="feature-button">Transfer</button>
+              <button onClick={() => setShowNewAccForm(!showNewAccForm)} className="feature-button">Register</button>
             </div>
           </div>
         </div>
@@ -160,6 +175,9 @@ function App() {
       <Route path="/accounts">
         <MainNavigation />
         <Accounts owners={accounts}/>
+      </Route>
+      <Route path="/transaction-history">
+        <TransactionHistory owners={accounts}/>
       </Route>
       <Route path="/budgetapp">
         <BudgetAppHome customer={customer} />
