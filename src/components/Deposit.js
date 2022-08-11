@@ -12,26 +12,33 @@ const Deposit = props => {
         props.setShowResult(true);
 
         if (input !== '' && input < props.whoseAccount.balance && input > 0) {
-            const previousBalance = props.whoseAccount.balance; 
+            const previousBalance = props.whoseAccount.balance;
+            //new additions for transaction history
+            const addToHistory = {
+                transactionType: "deposit",
+                amount: previousBalance
+            };
+            props.whoseAccount.history.push(addToHistory);
+
             props.whoseAccount.balance = Number(props.whoseAccount.balance) + Number(input);
             props.setUpdate(`Name: ${props.whoseAccount.name} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);
             setError({
                 title: 'Confirmation Message',
                 message: 'Deposit successful.'
-              });
+            });
         } else {
             props.setUpdate(`Invalid transaction`);
             setError({
                 title: 'Invalid Transaction',
                 message: 'Invalid transaction.'
-              });
-              return;
+            });
+            return;
         }
     }
 
     const errorHandler = () => {
         setError(null);
-      };
+    };
 
     return (
         <div className="deposit-wrapper">

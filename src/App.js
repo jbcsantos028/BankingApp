@@ -9,6 +9,7 @@ import LoginForm from './components/LoginPage';
 import MainNavigation from './components/MainNavigation';
 
 import "./App.css";
+import { TransactionHistory } from './components/TransactionHistory';
 
 const adminUser = {
   email: "admin@admin.com",
@@ -22,7 +23,21 @@ const dummyAccounts = [
     birthdate: "6/8/1990",
     id: 75053,
     email: "timothy@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    history: [
+      {
+        transactionType: "deposit",
+        amount: 10000
+      },
+      {
+        transactionType: "withdraw",
+        amount: 3000
+      },
+      {
+        transactionType: "transfer",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Pao Landicho",
@@ -156,6 +171,9 @@ function App() {
       <Route path="/accounts">
         <MainNavigation />
         <Accounts owners={accounts}/>
+      </Route>
+      <Route path="/transaction-history">
+        <TransactionHistory owners={accounts}/>
       </Route>
     </div>
   );
