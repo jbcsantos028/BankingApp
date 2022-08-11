@@ -8,6 +8,7 @@ import './BudgetAppHome.css'
 
 const BudgetAppHome = (props) => {
   console.log(props.customer);
+  console.log(props.accountType);
   return (
     <div className="budget-container">
       <div className="app-wrapper">

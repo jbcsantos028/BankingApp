@@ -2,7 +2,7 @@ import "./TransactionHistory.css";
 import MainNavigation from "./MainNavigation";
 
 export const TransactionHistory = props => {
-
+    console.log(props.customer);
     // Trial code
     const trialName = "Timothy Coronel"
     const chosenAccount = props.owners.find(item => item.name.toLowerCase() === trialName.toLowerCase());
@@ -17,6 +17,10 @@ export const TransactionHistory = props => {
     const transactionList = chosenAccount.history.map(item =>
         <li>{item.transactionType} ; {item.amount}</li>
     );
+
+    const checkUser = () => {
+        console.log(props.customer);
+    }
 
     return (
     <div>
@@ -33,6 +37,7 @@ export const TransactionHistory = props => {
                 <ul>{transactionList}</ul>
             </div>
         </div>
+        <button onClick={checkUser}>Check-user</button>
     </div>
     )
 }

@@ -7,7 +7,6 @@
   const LoginForm = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [accountType, setAccountType] = useState();
 
     let changePage = useHistory();
 
@@ -16,7 +15,7 @@
     };
 
     const handleChange = (e) => {
-      setAccountType(e.target.value);
+      props.setAccountType(e.target.value);
     }
   
     const passwordHandler = (e) => {
@@ -26,7 +25,7 @@
     const submitHandler = e => {
       e.preventDefault();
       
-      if (accountType === 'employee'){
+      if (props.accountType === 'employee'){
         if (email === props.authentication.email && password === props.authentication.password) {
           changePage.push('/transactions');
         }
@@ -35,7 +34,7 @@
           return;
         }
       }
-      else if (accountType === 'customer') {
+      else if (props.accountType === 'customer') {
         const customerAccount  = props.owners.find(item => item.email.toUpperCase() === email.toUpperCase());
         
         if (customerAccount && customerAccount.password === password) {
@@ -46,6 +45,7 @@
           console.log("Failed authentication");
         }
       }
+      console.log(props.customer);
     }
 
     return (
@@ -63,11 +63,11 @@
             </div>
             <div className="account-type">
               <div>
-                <input className="radio-input" type="radio" name="account-type" id="option1" value="employee" onChange={handleChange} checked={accountType === 'employee'} />
+                <input className="radio-input" type="radio" name="account-type" id="option1" value="employee" onChange={handleChange} checked={props.accountType === 'employee'} />
                 <label className="radio-label" htmlFor="option1">Employee</label>
               </div>
               <div>
-                <input className="radio-input" type="radio" name="account-type"  id="option2" value="customer" onChange={handleChange} checked={accountType === 'customer'} />
+                <input className="radio-input" type="radio" name="account-type"  id="option2" value="customer" onChange={handleChange} checked={props.accountType === 'customer'} />
                 <label className="radio-label" htmlFor="option2">Customer</label>
               </div>
             </div>

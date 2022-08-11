@@ -84,6 +84,10 @@ function App() {
       return [account, ...prevAccounts];
     });
   }
+
+  // Login Page
+  const [accountType, setAccountType] = useState();
+
   // Choose Acc
   const [whoseAccount, setWhoseAccount] = useState('');
   const [showProfile, setShowProfile] = useState('');
@@ -98,6 +102,7 @@ function App() {
 
   // Budget App
   const [customer, setCustomer] = useState('');
+  
 
   const showClick = (whichButton) => {
     setShowResult(false);
@@ -133,7 +138,7 @@ function App() {
       <Route path="/" exact>
         <header className="login-header"><div>ShawnPH Bank</div></header>
         <div className="login">
-          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} />
+          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} accountType={accountType} setAccountType={setAccountType} />
         </div>
       </Route>
       <Route path="/transactions">
@@ -177,10 +182,10 @@ function App() {
         <Accounts owners={accounts}/>
       </Route>
       <Route path="/transaction-history">
-        <TransactionHistory owners={accounts}/>
+        <TransactionHistory owners={accounts} customer={customer} accountType={accountType} />
       </Route>
       <Route path="/budgetapp">
-        <BudgetAppHome customer={customer} />
+        <BudgetAppHome customer={customer} accountType={accountType} />
       </Route>
     </div>
   );
