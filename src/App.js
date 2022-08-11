@@ -7,6 +7,7 @@ import AccInteractPage from './components/AccInteractPage';
 import ChooseAccount from './components/ChooseAccount';
 import LoginForm from './components/LoginPage';
 import MainNavigation from './components/MainNavigation';
+import BudgetAppHome from './components/BudgetAppHome';
 
 import "./App.css";
 
@@ -80,6 +81,9 @@ function App() {
   const [showTransfer, setShowTransfer] = useState(false);
   const [showResult, setShowResult] = useState(false);
 
+  // Budget App
+  const [customer, setCustomer] = useState('');
+
   const showClick = (whichButton) => {
     setShowResult(false);
     if (whichButton === 'deposit') {
@@ -114,7 +118,7 @@ function App() {
       <Route path="/" exact>
         <header className="login-header"><div>ShawnPH Bank</div></header>
         <div className="login">
-          <LoginForm authentication={adminUser}/>
+          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} />
         </div>
       </Route>
       <Route path="/transactions">
@@ -156,6 +160,9 @@ function App() {
       <Route path="/accounts">
         <MainNavigation />
         <Accounts owners={accounts}/>
+      </Route>
+      <Route path="/budgetapp">
+        <BudgetAppHome customer={customer} />
       </Route>
     </div>
   );
