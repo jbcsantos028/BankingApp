@@ -28,13 +28,13 @@ const Transfer = props => {
         if (inputAmount !== '' && inputAmount < props.whoseAccount.balance && inputAmount > 0 && receiverAccount !== props.whoseAccount.name) {    
             //new additions for transaction history
             const addToHistory = {
-                transactionType: "Sent",
+                transactionType: "Transfer: Sent",
                 amount: inputAmount
             };
             props.whoseAccount.history.push(addToHistory);
             
             const addToHistoryReceiver = {
-                transactionType: "Nice Reshivved",
+                transactionType: "Transfer: Reshived",
                 amount: inputAmount
             };
             receiver.history.push(addToHistoryReceiver);

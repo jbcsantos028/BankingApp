@@ -23,17 +23,18 @@ export const TransactionHistory = props => {
         </li>
     );
 
-    const checkUser = () => {
-        console.log(props.customer);
-    }
+    // const checkUser = () => {
+    //     console.log(props.customer);
+    // }
 
     return (
     <div>
-        {/* <MainNavigation /> */}
+        <div className="transaction-history-header">
+            <h1>Transaction History</h1>
+            <h6>This page contains your past finances... and possibly your flawed saving habits</h6>
+        </div>
         <div className="transaction-history-wrapper">
             <div className="transaction-history">
-                <h1>Transaction History</h1>
-                <p>This page is a history of transactions in the past</p>
                 <div className="transaction-history-list">
                     <div className="transaction-history-item-types">
                         <span>Type</span>
@@ -49,7 +50,7 @@ export const TransactionHistory = props => {
                 </div>
             </div>
         </div>
-        <button onClick={checkUser}>Check-user</button>
+        {/* <button onClick={checkUser}>Check-user</button> */}
     </div>
     )
 }

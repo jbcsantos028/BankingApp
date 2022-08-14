@@ -12,7 +12,6 @@ const BudgetAppHome = (props) => {
   console.log(props.accountType);
   return (
     <div>
-      {/* <MainNavigation accountType={props.accountType} /> */}
       <div className="budget-container">
         <div className="app-wrapper">
           <BudgetHeader customer={props.customer} />

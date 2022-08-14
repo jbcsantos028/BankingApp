@@ -11,6 +11,7 @@ import BudgetAppHome from './components/BudgetAppHome';
 
 import "./App.css";
 import { TransactionHistory } from './components/TransactionHistory';
+import { StashPage } from './components/Stash Feature/StashPage';
 
 const adminUser = {
   email: "admin@admin.com",
@@ -31,12 +32,22 @@ const dummyAccounts = [
         amount: 10001
       },
       {
-        transactionType: "withdraw",
+        transactionType: "Widwoah",
         amount: 3000
       },
       {
-        transactionType: "transfer",
+        transactionType: "Transfer: Sent",
         amount: 500
+      }
+    ],
+    stash: [
+      {
+        stashType: "bills",
+        amount: 1000
+      },
+      {
+        stashType: "dream car",
+        amount: 2000
       }
     ]
   },
@@ -53,11 +64,11 @@ const dummyAccounts = [
         amount: 100002
       },
       {
-        transactionType: "withdraw",
+        transactionType: "Widwoah",
         amount: 2000
       },
       {
-        transactionType: "transfer",
+        transactionType: "Transfer: Reshived",
         amount: 500
       }
     ]
@@ -75,11 +86,11 @@ const dummyAccounts = [
         amount: 100003
       },
       {
-        transactionType: "withdraw",
+        transactionType: "Widwoah",
         amount: 2000
       },
       {
-        transactionType: "transfer",
+        transactionType: "Transfer: Sent",
         amount: 500
       }
     ]
@@ -97,11 +108,11 @@ const dummyAccounts = [
         amount: 100004
       },
       {
-        transactionType: "withdraw",
+        transactionType: "Widwoah",
         amount: 2000
       },
       {
-        transactionType: "transfer",
+        transactionType: "Transfer: Reshived",
         amount: 500
       }
     ]
@@ -227,6 +238,9 @@ function App() {
       </Route>
       <Route path="/budgetapp">
         <BudgetAppHome customer={customer} accountType={accountType} />
+      </Route>
+      <Route path="/stash-page">
+        <StashPage owners={accounts} customer={customer} accountType={accountType} />
       </Route>
     </div>
   );

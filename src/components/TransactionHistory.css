@@ -1,3 +1,7 @@
+.transaction-history-header {
+    margin-left: 40px;
+    color: #F3EAC0;
+}
 .transaction-history-wrapper {
     width: 100%;
     display: flex;
