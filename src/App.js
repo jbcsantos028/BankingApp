@@ -27,8 +27,8 @@ const dummyAccounts = [
     password: "pass1",
     history: [
       {
-        transactionType: "deposit",
-        amount: 10000
+        transactionType: "Depusit",
+        amount: 10001
       },
       {
         transactionType: "withdraw",
@@ -46,7 +46,21 @@ const dummyAccounts = [
     birthdate: "23/4/1993",
     id: 83453,
     email: "pao@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100002
+      },
+      {
+        transactionType: "withdraw",
+        amount: 2000
+      },
+      {
+        transactionType: "transfer",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Jul Santos",
@@ -54,7 +68,21 @@ const dummyAccounts = [
     birthdate: "7/12/2002",
     id: 83490,
     email: "jul@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100003
+      },
+      {
+        transactionType: "withdraw",
+        amount: 2000
+      },
+      {
+        transactionType: "transfer",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Jas Santos",
@@ -62,7 +90,21 @@ const dummyAccounts = [
     birthdate: "31/7/1998",
     id: 89222,
     email: "jas@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100004
+      },
+      {
+        transactionType: "withdraw",
+        amount: 2000
+      },
+      {
+        transactionType: "transfer",
+        amount: 500
+      }
+    ]
   },
 ];
 
@@ -71,7 +113,7 @@ let localAccounts = JSON.parse(localStorage.getItem('accounts'));
 if (!localAccounts) {
   localStorage.setItem('accounts', JSON.stringify(dummyAccounts));
   localAccounts = JSON.parse(localStorage.getItem('accounts'));
-  }
+}
 
 function App() {
 
@@ -86,7 +128,7 @@ function App() {
   }
 
   // Login Page
-  const [accountType, setAccountType] = useState();
+  const [accountType, setAccountType] = useState('');
 
   // Choose Acc
   const [whoseAccount, setWhoseAccount] = useState('');
@@ -135,14 +177,14 @@ function App() {
 
   return (
     <div>
+      <MainNavigation accountType={accountType}/>
       <Route path="/" exact>
-        <header className="login-header"><div>ShawnPH Bank</div></header>
+        {/* <header className="login-header"><div>ShawnPH Bank</div></header> */}
         <div className="login">
           <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} accountType={accountType} setAccountType={setAccountType} />
         </div>
       </Route>
       <Route path="/transactions">
-        <MainNavigation />
         <div className="header-main">
           {
             showNewAccForm ?
@@ -178,7 +220,6 @@ function App() {
         </div>
       </Route>
       <Route path="/accounts">
-        <MainNavigation />
         <Accounts owners={accounts}/>
       </Route>
       <Route path="/transaction-history">

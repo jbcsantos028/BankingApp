@@ -5,18 +5,22 @@ import AddTransaction from './AddTransaction';
 import IncomeList from './IncomeList';
 import ExpenseList from './ExpenseList';
 import './BudgetAppHome.css'
+// import MainNavigation from './MainNavigation';
 
 const BudgetAppHome = (props) => {
   console.log(props.customer);
   console.log(props.accountType);
   return (
-    <div className="budget-container">
-      <div className="app-wrapper">
-        <BudgetHeader customer={props.customer} />
-        <BudgetBalance customer={props.customer} />
-        <AddTransaction />
-        <IncomeList />
-        <ExpenseList />
+    <div>
+      {/* <MainNavigation accountType={props.accountType} /> */}
+      <div className="budget-container">
+        <div className="app-wrapper">
+          <BudgetHeader customer={props.customer} />
+          <BudgetBalance customer={props.customer} />
+          <AddTransaction />
+          <IncomeList />
+          <ExpenseList />
+        </div>
       </div>
     </div>
   )

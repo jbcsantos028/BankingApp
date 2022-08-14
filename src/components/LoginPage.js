@@ -39,6 +39,7 @@
         
         if (customerAccount && customerAccount.password === password) {
           props.setCustomer(customerAccount);
+          props.setAccountType('customer');
           changePage.push('/budgetapp');
         }
         else if (!customerAccount || customerAccount.password !== password) {
@@ -49,31 +50,31 @@
     }
 
     return (
-        <form onSubmit={submitHandler}>
-          <div className="form-inner">
-            <h2>Sign in to ShawnPH</h2>
-            {/* ERROR! */}
-            <div className="form-group">
-              <label htmlFor="email">Email: </label>
-              <input type="email" name="email" id="email" onChange={emailHandler} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password: </label>
-              <input type="password" name="password" id="password" onChange={passwordHandler} />
-            </div>
-            <div className="account-type">
-              <div>
-                <input className="radio-input" type="radio" name="account-type" id="option1" value="employee" onChange={handleChange} checked={props.accountType === 'employee'} />
-                <label className="radio-label" htmlFor="option1">Employee</label>
-              </div>
-              <div>
-                <input className="radio-input" type="radio" name="account-type"  id="option2" value="customer" onChange={handleChange} checked={props.accountType === 'customer'} />
-                <label className="radio-label" htmlFor="option2">Customer</label>
-              </div>
-            </div>
-            <button className="login-btn" type="submit">LOGIN</button>
+      <form onSubmit={submitHandler}>
+        <div className="form-inner">
+          <h2>Sign in to ShawnPH</h2>
+          {/* ERROR! */}
+          <div className="form-group">
+            <label htmlFor="email">Email: </label>
+            <input type="email" name="email" id="email" onChange={emailHandler} />
           </div>
-        </form>
+          <div className="form-group">
+            <label htmlFor="password">Password: </label>
+            <input type="password" name="password" id="password" onChange={passwordHandler} />
+          </div>
+          <div className="account-type">
+            <div>
+              <input className="radio-input" type="radio" name="account-type" id="option1" value="employee" onChange={handleChange} checked={props.accountType === 'employee'} />
+              <label className="radio-label" htmlFor="option1">Employee</label>
+            </div>
+            <div>
+              <input className="radio-input" type="radio" name="account-type"  id="option2" value="customer" onChange={handleChange} checked={props.accountType === 'customer'} />
+              <label className="radio-label" htmlFor="option2">Customer</label>
+            </div>
+          </div>
+          <button className="login-btn" type="submit">LOGIN</button>
+        </div>
+      </form>
     );
   }
 

@@ -1,8 +1,19 @@
-.transaction-history {
+.transaction-history-wrapper {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.transaction-history {
+    width: 60%;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 8px;
+
+    background-color: #747080;
+    color: #F3EAC0;
 }
 
 .transaction-history-list {
@@ -11,11 +22,31 @@
 
 .transaction-history-item-types {
     width: 100%;
+    justify-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
     
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .transaction-history-list ul {
     list-style-type: none;
+}
+
+.transaction-history-list li {
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 0.5px dashed black;
+}
+
+.ongoing-balance {
+    border-top: 2px solid black;
+    margin-top: 10px;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-style: italic;
 }
