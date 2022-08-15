@@ -11,12 +11,12 @@ const Deposit = props => {
         e.preventDefault();
         props.setShowResult(true);
 
-        if (input !== '' && input < props.whoseAccount.balance && input > 0) {
+        if (input !== '' && input > 0) {
             const previousBalance = props.whoseAccount.balance;
             //new additions for transaction history
             const addToHistory = {
-                transactionType: "deposit",
-                amount: previousBalance
+                transactionType: "Depusit",
+                amount: input
             };
             props.whoseAccount.history.push(addToHistory);
 

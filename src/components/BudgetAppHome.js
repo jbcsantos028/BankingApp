@@ -5,8 +5,10 @@ import AddTransaction from './AddTransaction';
 import IncomeList from './IncomeList';
 import ExpenseList from './ExpenseList';
 import './BudgetAppHome.css'
+// import MainNavigation from './MainNavigation';
 
 const BudgetAppHome = (props) => {
+
   
   const addIncomeHandler = income => {
     const incomeData = {
