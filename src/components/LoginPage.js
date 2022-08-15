@@ -39,7 +39,15 @@
         
         if (customerAccount && customerAccount.password === password) {
           props.setCustomer(customerAccount);
+
+          props.onAddCustomerIncome(customerAccount.income);
+          props.onAddCustomerExpense(customerAccount.expense);
+          props.onAddCustomerTotalIncome(customerAccount.totalIncome);
+          props.onAddCustomerTotalExpense(customerAccount.totalExpense);
+          props.onAddCustomerTotalBudget(customerAccount.totalBudget);
+
           props.setAccountType('customer');
+
           changePage.push('/budgetapp');
         }
         else if (!customerAccount || customerAccount.password !== password) {

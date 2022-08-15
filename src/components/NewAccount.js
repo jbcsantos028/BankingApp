@@ -6,7 +6,11 @@ const NewAccount = (props) => {
   const saveAccountDateHandler = (enteredAccountData) => {
     const accountData = {
       ...enteredAccountData,
-      id: (Math.floor((1 + Math.random()) * 0x10000)).toString()
+      id: (Math.floor((1 + Math.random()) * 0x10000)).toString(),
+      income: [],
+      expense: [],
+      totalIncome: 0,
+      totalExpense: 0
     }
     props.onAddAccount(accountData);
   }

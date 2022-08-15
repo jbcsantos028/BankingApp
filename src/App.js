@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
@@ -8,6 +9,7 @@ import ChooseAccount from './components/ChooseAccount';
 import LoginForm from './components/LoginPage';
 import MainNavigation from './components/MainNavigation';
 import BudgetAppHome from './components/BudgetAppHome';
+import Crypto from './components/Crypto';
 
 import "./App.css";
 import { TransactionHistory } from './components/TransactionHistory';
@@ -40,6 +42,43 @@ const dummyAccounts = [
         amount: 500
       }
     ],
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 26289,
     stash: [
       {
         stashType: "bills",
@@ -58,6 +97,43 @@ const dummyAccounts = [
     id: 83453,
     email: "pao@gmail.com",
     password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 37289,
     history: [
       {
         transactionType: "Depusit",
@@ -80,6 +156,43 @@ const dummyAccounts = [
     id: 83490,
     email: "jul@gmail.com",
     password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 19289,
     history: [
       {
         transactionType: "Depusit",
@@ -102,6 +215,43 @@ const dummyAccounts = [
     id: 89222,
     email: "jas@gmail.com",
     password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 51289,
     history: [
       {
         transactionType: "Depusit",
@@ -116,7 +266,7 @@ const dummyAccounts = [
         amount: 500
       }
     ]
-  },
+  }
 ];
 
 let localAccounts = JSON.parse(localStorage.getItem('accounts'));
@@ -127,7 +277,19 @@ if (!localAccounts) {
 }
 
 function App() {
+  //crypto
+  const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState('');
 
+  useEffect(() => {
+    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=php&order=market_cap_desc&per_page=80&page=1&sparkline=false')
+    .then(res => {
+      setCoins(res.data);
+    }).catch(error => console.log(error))
+  }, []);
+
+  
+  //bank-app
   const [accounts, setAccounts] = useState(localAccounts);
   const [update, setUpdate] = useState('');
   const [transferUpdate, setTransferUpdate] = useState('');
@@ -136,6 +298,52 @@ function App() {
     setAccounts(prevAccounts => {
       return [account, ...prevAccounts];
     });
+  }
+
+  const addIncomeHandler = income => {
+    setCustomerIncome(prevIncome => {
+      return [income, ...prevIncome];
+    });
+    customer.income.unshift(income);
+  }
+
+  const addCustomerIncomeHandler = customerIncome => {
+    setCustomerIncome(customerIncome);
+  }
+
+  const addExpenseHandler = expense => {
+    setCustomerExpense(prevExpense => {
+      return [expense, ...prevExpense];
+    });
+    customer.expense.unshift(expense);
+  }
+
+  const addCustomerExpenseHandler = customerExpense => {
+    setCustomerExpense(customerExpense);
+  }
+
+  const totalIncomeHandler = totalIncome => {
+    setCustomerTotalIncome(totalIncome);
+  }
+
+  const addCustomerTotalIncomeHandler = customerTotalIncome => {
+    setCustomerTotalIncome(customerTotalIncome);
+  }
+
+  const totalExpenseHandler = totalExpense => {
+    setCustomerTotalExpense(totalExpense);
+  }
+
+  const addCustomerTotalExpenseHandler = customerTotalExpense => {
+    setCustomerTotalExpense(customerTotalExpense);
+  }
+
+  const totalBudgetHandler = totalBudget => {
+    setCustomerTotalBudget(totalBudget);
+  }
+
+  const addCustomerTotalBudgetHandler = customerTotalBudget => {
+    setCustomerTotalBudget(customerTotalBudget);
   }
 
   // Login Page
@@ -155,7 +363,11 @@ function App() {
 
   // Budget App
   const [customer, setCustomer] = useState('');
-  
+  const [customerIncome, setCustomerIncome] = useState('');
+  const [customerExpense, setCustomerExpense] = useState('');
+  const [customerTotalIncome, setCustomerTotalIncome] = useState('');
+  const [customerTotalExpense, setCustomerTotalExpense] = useState('');
+  const [customerTotalBudget, setCustomerTotalBudget] = useState('');
 
   const showClick = (whichButton) => {
     setShowResult(false);
@@ -192,7 +404,7 @@ function App() {
       <Route path="/" exact>
         {/* <header className="login-header"><div>ShawnPH Bank</div></header> */}
         <div className="login">
-          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} accountType={accountType} setAccountType={setAccountType} />
+          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} onAddCustomerIncome={addCustomerIncomeHandler} onAddCustomerExpense={addCustomerExpenseHandler} onAddCustomerTotalIncome={addCustomerTotalIncomeHandler} onAddCustomerTotalExpense={addCustomerTotalExpenseHandler} onAddCustomerTotalBudget={addCustomerTotalBudgetHandler} accountType={accountType} setAccountType={setAccountType} />
         </div>
       </Route>
       <Route path="/transactions">
@@ -237,7 +449,10 @@ function App() {
         <TransactionHistory owners={accounts} customer={customer} accountType={accountType} />
       </Route>
       <Route path="/budgetapp">
-        <BudgetAppHome customer={customer} accountType={accountType} />
+        <BudgetAppHome owners={accounts} customer={customer} accountType={accountType} onAddIncome={addIncomeHandler} onAddExpense={addExpenseHandler} customerIncome={customerIncome} setCustomerIncome={setCustomerIncome} customerExpense={customerExpense} setCustomerExpense={setCustomerExpense} customerTotalIncome={customerTotalIncome} onAdjustTotalIncome={totalIncomeHandler} customerTotalExpense={customerTotalExpense} onAdjustTotalExpense={totalExpenseHandler} customerTotalBudget={customerTotalBudget} onAdjustTotalBudget={totalBudgetHandler} />
+      </Route>
+      <Route path="/crypto">
+        <Crypto search={search} onCoinSearch={setSearch} coins={coins} />
       </Route>
       <Route path="/stash-page">
         <StashPage owners={accounts} customer={customer} accountType={accountType} />

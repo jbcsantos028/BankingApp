@@ -34,7 +34,7 @@
 .login-header {
     width: 100%;
     height: 5rem;
-    background-color: #ddb3f8;
+    background-color: #f8dfff;
     padding: 0 1.5%;
 }
 
@@ -60,7 +60,7 @@
     right: -5px;
     bottom: -5px;
     z-index: 1;
-    background-color: #ddb3f8;
+    background-color: #f8dfff;
     border-radius: 6px;
 }
 
@@ -83,7 +83,7 @@ body {
 
 /* Shawn Code */
 .acc-interact-wrapper {
-    background-color: #ddb3f8;
+    background-color: #f8dfff;
     padding: 1rem;
     margin: 2rem auto;
     width: 50rem;

@@ -93,7 +93,11 @@ const AccountForm = (props) => {
       name: name,
       balance: +balance,
       birthdate: getDate(birthdate),
+
+      totalBudget: +balance
+
       history: []
+
     }
     props.onSaveAccountData(accountData);
     setEmail('');
