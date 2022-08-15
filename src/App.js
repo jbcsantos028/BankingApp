@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 import Accounts from "./components/Accounts";
 import NewAccount from "./components/NewAccount";
@@ -8,6 +9,7 @@ import ChooseAccount from './components/ChooseAccount';
 import LoginForm from './components/LoginPage';
 import MainNavigation from './components/MainNavigation';
 import BudgetAppHome from './components/BudgetAppHome';
+import Crypto from './components/Crypto';
 
 import "./App.css";
 import { TransactionHistory } from './components/TransactionHistory';
@@ -222,7 +224,19 @@ if (!localAccounts) {
   }
 
 function App() {
+  //crypto
+  const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState('');
 
+  useEffect(() => {
+    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=php&order=market_cap_desc&per_page=80&page=1&sparkline=false')
+    .then(res => {
+      setCoins(res.data);
+    }).catch(error => console.log(error))
+  }, []);
+
+  
+  //bank-app
   const [accounts, setAccounts] = useState(localAccounts);
   const [update, setUpdate] = useState('');
   const [transferUpdate, setTransferUpdate] = useState('');
@@ -385,6 +399,9 @@ function App() {
       </Route>
       <Route path="/budgetapp">
         <BudgetAppHome owners={accounts} customer={customer} accountType={accountType} onAddIncome={addIncomeHandler} onAddExpense={addExpenseHandler} customerIncome={customerIncome} setCustomerIncome={setCustomerIncome} customerExpense={customerExpense} setCustomerExpense={setCustomerExpense} customerTotalIncome={customerTotalIncome} onAdjustTotalIncome={totalIncomeHandler} customerTotalExpense={customerTotalExpense} onAdjustTotalExpense={totalExpenseHandler} customerTotalBudget={customerTotalBudget} onAdjustTotalBudget={totalBudgetHandler} />
+      </Route>
+      <Route path="/crypto">
+        <Crypto search={search} onCoinSearch={setSearch} coins={coins} />
       </Route>
     </div>
   );

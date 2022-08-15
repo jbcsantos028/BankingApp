@@ -44,7 +44,7 @@
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  color: #ddb3f8;
+  color: #f8dfff;
   text-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 
@@ -87,11 +87,11 @@
 }
 
 .plus {
-  color: #ddb3f8;
+  color: #f8dfff;
 }
 
 .minus {
-  color: #ddb3f8;
+  color: #f8dfff;
 }
 
 .income-expense h3 {

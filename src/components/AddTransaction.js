@@ -39,7 +39,7 @@ const AddTransaction = (props) => {
 
     setError({
       title: 'Confirmation Message',
-      message: 'Adding item successful.'
+      message: 'Adding of item was successful.'
   });
     props.onAddIncome(addToIncome);
     setIncomeDescription('');
@@ -63,7 +63,7 @@ const submitExpenseHandler = (e) => {
 
   setError({
     title: 'Confirmation Message',
-    message: 'Adding item successful.'
+    message: 'Adding of item was successful.'
 });
   props.onAddExpense(addToExpense);
   setExpenseDescription('');
