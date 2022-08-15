@@ -17,4 +17,13 @@
     width: 30%;
     height: 100px;
     border-radius: 8px;
+    font-size: 20px;
+}
+
+.stash-list button {
+    cursor: pointer;
+}
+
+.fa {
+    font-size: 50px;
 }

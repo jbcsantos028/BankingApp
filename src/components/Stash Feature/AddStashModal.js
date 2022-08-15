@@ -3,13 +3,14 @@ import { useState } from "react";
 
 export const AddStashModal = props => {
     const [input, setInput] = useState('');
+    const [nameInput, setNameInput] = useState('');
 
     const addStashSubmit = () => {
         console.log(props.customer);
         props.setAddStashOpen(false);
 
         const addStashToAccount = {
-            stashType: "bills",
+            stashName: nameInput,
             amount: input
         };
 
@@ -17,7 +18,6 @@ export const AddStashModal = props => {
 
         props.customer.stash.push(addStashToAccount);
         props.setUpdateStash(`${addStashToAccount} + ${props.customer.balance} + ${props.customer.stash}`);
-        localStorage.setItem('accounts', JSON.stringify(props.customer));
     }
 
     if (props.addStashOpen) {
@@ -25,11 +25,18 @@ export const AddStashModal = props => {
             <div className="modal-overlay">
                 <div className="add-stash-modal">
                     <div>
-                        <button onClick={() => props.setAddStashOpen(false)}>{props.customer.name}</button>
-                        <button onClick={console.log(props.customer)}>Check customer status</button>
+                        <button onClick={() => props.setAddStashOpen(false)}>X button</button>
+                        {/* <button onClick={console.log(props.customer)}>Check customer status</button> */}
                     </div>
                     <form>
-                        <input type="text" value={input} onInput={e => setInput(e.target.value)}></input>
+                        <div>
+                            <label>Enter amount: </label>
+                            <input type="text" value={input} onInput={e => setInput(e.target.value)}></input>
+                        </div>
+                        <div>
+                            <label>Stash name: </label>
+                            <input type="text" value={nameInput} onInput={e => setNameInput(e.target.value)}></input>
+                        </div>
                         <button onClick={() => addStashSubmit()}>Add Stash</button>
                     </form>
                 </div>

@@ -81,11 +81,11 @@ const dummyAccounts = [
     totalBudget: 26289,
     stash: [
       {
-        stashType: "bills",
+        stashName: "bills",
         amount: 1000
       },
       {
-        stashType: "dream car",
+        stashName: "dream car",
         amount: 2000
       },
     ],

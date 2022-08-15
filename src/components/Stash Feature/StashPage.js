@@ -7,30 +7,36 @@ export const StashPage = props => {
 
     const stashList = props.customer.stash.map(item => {
         let icon = '';
-        if (item.stashType === 'bills') {
+        if (item.stashName === 'bills') {
             icon = "🧾";
-        } else if (item.stashType === 'dream car') {
+        } else if (item.stashName === 'dream car') {
             icon = "🚗";
+        } else if (item.stashName === 'family') {
+            icon = "👨‍👩‍👧";
+        } else if (item.stashName === 'art') {
+            icon = "🎨";
+        } else if (item.stashName === 'games') {
+            icon = "🎮";
         };
         return (
             <button>
                 <span>{icon}</span>
-                <div>{item.stashType}</div>
+                <div>{item.stashName}</div>
             </button>
         )
     },)
 
-    const checkModal = () => {
-        console.log(addStashOpen);
-        console.log(props.customer);
-    }
+    // const checkModal = () => {
+    //     console.log(addStashOpen);
+    //     console.log(props.customer);
+    // }
 
     return (
         <div>
             <div className="stash-page-header">
                 <h1>Stash</h1>
                 <div>{props.customer.balance}</div>
-                <button onClick={checkModal}>Check modal state</button>
+                {/* <button onClick={checkModal}>Check modal state</button> */}
             </div>
             <div className="stash-page-wrapper">
                 <div className="stash-list">
