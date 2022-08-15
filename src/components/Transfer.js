@@ -26,6 +26,19 @@ const Transfer = props => {
         props.setShowResult(true);
         
         if (inputAmount !== '' && inputAmount < props.whoseAccount.balance && inputAmount > 0 && receiverAccount !== props.whoseAccount.name) {    
+            //new additions for transaction history
+            const addToHistory = {
+                transactionType: "Transfer: Sent",
+                amount: inputAmount
+            };
+            props.whoseAccount.history.push(addToHistory);
+            
+            const addToHistoryReceiver = {
+                transactionType: "Transfer: Reshived",
+                amount: inputAmount
+            };
+            receiver.history.push(addToHistoryReceiver);
+
             props.whoseAccount.balance = Number(props.whoseAccount.balance) - Number(inputAmount);
             receiver.balance = Number(receiverPreviousBalance) + Number(inputAmount);
             props.setUpdate(`The Giver: ${props.whoseAccount.name.toUpperCase()} ; Old: ${previousBalance} ; New: ${props.whoseAccount.balance}`);

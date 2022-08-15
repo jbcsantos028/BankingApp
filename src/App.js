@@ -13,6 +13,7 @@ import Crypto from './components/Crypto';
 
 import "./App.css";
 import { TransactionHistory } from './components/TransactionHistory';
+import { StashPage } from './components/Stash Feature/StashPage';
 
 const adminUser = {
   email: "admin@admin.com",
@@ -29,15 +30,15 @@ const dummyAccounts = [
     password: "pass1",
     history: [
       {
-        transactionType: "deposit",
-        amount: 10000
+        transactionType: "Depusit",
+        amount: 10001
       },
       {
-        transactionType: "withdraw",
+        transactionType: "Widwoah",
         amount: 3000
       },
       {
-        transactionType: "transfer",
+        transactionType: "Transfer: Sent",
         amount: 500
       }
     ],
@@ -77,7 +78,17 @@ const dummyAccounts = [
     ],
     totalIncome: 13500,
     totalExpense: 12211,
-    totalBudget: 26289
+    totalBudget: 26289,
+    stash: [
+      {
+        stashType: "bills",
+        amount: 1000
+      },
+      {
+        stashType: "dream car",
+        amount: 2000
+      }
+    ]
   },
   {
     name: "Pao Landicho",
@@ -122,7 +133,21 @@ const dummyAccounts = [
     ],
     totalIncome: 13500,
     totalExpense: 12211,
-    totalBudget: 37289
+    totalBudget: 37289,
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100002
+      },
+      {
+        transactionType: "Widwoah",
+        amount: 2000
+      },
+      {
+        transactionType: "Transfer: Reshived",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Jul Santos",
@@ -167,7 +192,21 @@ const dummyAccounts = [
     ],
     totalIncome: 13500,
     totalExpense: 12211,
-    totalBudget: 19289
+    totalBudget: 19289,
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100003
+      },
+      {
+        transactionType: "Widwoah",
+        amount: 2000
+      },
+      {
+        transactionType: "Transfer: Sent",
+        amount: 500
+      }
+    ]
   },
   {
     name: "Jas Santos",
@@ -212,7 +251,21 @@ const dummyAccounts = [
     ],
     totalIncome: 13500,
     totalExpense: 12211,
-    totalBudget: 51289
+    totalBudget: 51289,
+    history: [
+      {
+        transactionType: "Depusit",
+        amount: 100004
+      },
+      {
+        transactionType: "Widwoah",
+        amount: 2000
+      },
+      {
+        transactionType: "Transfer: Reshived",
+        amount: 500
+      }
+    ]
   }
 ];
 
@@ -221,7 +274,7 @@ let localAccounts = JSON.parse(localStorage.getItem('accounts'));
 if (!localAccounts) {
   localStorage.setItem('accounts', JSON.stringify(dummyAccounts));
   localAccounts = JSON.parse(localStorage.getItem('accounts'));
-  }
+}
 
 function App() {
   //crypto
@@ -294,7 +347,7 @@ function App() {
   }
 
   // Login Page
-  const [accountType, setAccountType] = useState();
+  const [accountType, setAccountType] = useState('');
 
   // Choose Acc
   const [whoseAccount, setWhoseAccount] = useState('');
@@ -315,7 +368,6 @@ function App() {
   const [customerTotalIncome, setCustomerTotalIncome] = useState('');
   const [customerTotalExpense, setCustomerTotalExpense] = useState('');
   const [customerTotalBudget, setCustomerTotalBudget] = useState('');
-  
 
   const showClick = (whichButton) => {
     setShowResult(false);
@@ -348,14 +400,14 @@ function App() {
 
   return (
     <div>
+      <MainNavigation accountType={accountType}/>
       <Route path="/" exact>
-        <header className="login-header"><div>ShawnPH Bank</div></header>
+        {/* <header className="login-header"><div>ShawnPH Bank</div></header> */}
         <div className="login">
-          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} onAddCustomerIncome={addCustomerIncomeHandler} onAddCustomerExpense={addCustomerExpenseHandler} onAddCustomerTotalIncome={addCustomerTotalIncomeHandler} onAddCustomerTotalExpense={addCustomerTotalExpenseHandler} onAddCustomerTotalBudget={addCustomerTotalBudgetHandler} accountType={accountType} setAccountType={setAccountType} />
+          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} onAddCustomerIncome={addCustomerIncomeHandler} onAddCustomerExpense={addCustomerExpenseHandler} onAddCustomerTotalIncome={addCustomerTotalIncomeHandler} onAddCustomerTotalExpense={addCustomerTotalExpenseHandler} onAddCustomerTotalBudget={addCustomerTotalBudgetHandler} accountType={accountType} setAccountType={setAccountType} />
         </div>
       </Route>
       <Route path="/transactions">
-        <MainNavigation />
         <div className="header-main">
           {
             showNewAccForm ?
@@ -391,17 +443,19 @@ function App() {
         </div>
       </Route>
       <Route path="/accounts">
-        <MainNavigation />
         <Accounts owners={accounts}/>
       </Route>
       <Route path="/transaction-history">
-        <TransactionHistory owners={accounts}/>
+        <TransactionHistory owners={accounts} customer={customer} accountType={accountType} />
       </Route>
       <Route path="/budgetapp">
         <BudgetAppHome owners={accounts} customer={customer} accountType={accountType} onAddIncome={addIncomeHandler} onAddExpense={addExpenseHandler} customerIncome={customerIncome} setCustomerIncome={setCustomerIncome} customerExpense={customerExpense} setCustomerExpense={setCustomerExpense} customerTotalIncome={customerTotalIncome} onAdjustTotalIncome={totalIncomeHandler} customerTotalExpense={customerTotalExpense} onAdjustTotalExpense={totalExpenseHandler} customerTotalBudget={customerTotalBudget} onAdjustTotalBudget={totalBudgetHandler} />
       </Route>
       <Route path="/crypto">
         <Crypto search={search} onCoinSearch={setSearch} coins={coins} />
+      </Route>
+      <Route path="/stash-page">
+        <StashPage owners={accounts} customer={customer} accountType={accountType} />
       </Route>
     </div>
   );

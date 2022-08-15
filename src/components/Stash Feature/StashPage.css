@@ -1,0 +1,20 @@
+.stash-page-header {
+    margin-left: 40px;
+    color: #F3EAC0;
+}
+.stash-page-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.stash-list {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.stash-list button {
+    margin: 10px;
+    width: 30%;
+    height: 100px;
+    border-radius: 8px;
+}
