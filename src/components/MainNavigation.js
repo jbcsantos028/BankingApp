@@ -13,6 +13,7 @@ const MainNavigation = props => {
           <ul>
             <li><Link to='/transaction-history'>History</Link></li>
             <li><Link to='/stash-page'>Stash</Link></li>
+            <li><Link to='/crypto'>Crypto</Link></li>
             <li><Link to='/'>Logout</Link></li>
           </ul>
         )
