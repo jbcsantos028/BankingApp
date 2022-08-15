@@ -87,8 +87,8 @@ const dummyAccounts = [
       {
         stashType: "dream car",
         amount: 2000
-      }
-    ]
+      },
+    ],
   },
   {
     name: "Pao Landicho",
@@ -369,6 +369,9 @@ function App() {
   const [customerTotalExpense, setCustomerTotalExpense] = useState('');
   const [customerTotalBudget, setCustomerTotalBudget] = useState('');
 
+  // Stash App
+  const [updateStash, setUpdateStash] = useState('')
+
   const showClick = (whichButton) => {
     setShowResult(false);
     if (whichButton === 'deposit') {
@@ -455,7 +458,7 @@ function App() {
         <Crypto search={search} onCoinSearch={setSearch} coins={coins} />
       </Route>
       <Route path="/stash-page">
-        <StashPage owners={accounts} customer={customer} accountType={accountType} />
+        <StashPage owners={accounts} customer={customer} accountType={accountType} updateStash={updateStash} setUpdateStash={setUpdateStash} />
       </Route>
     </div>
   );
