@@ -38,7 +38,44 @@ const dummyAccounts = [
         transactionType: "transfer",
         amount: 500
       }
-    ]
+    ],
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 26289
   },
   {
     name: "Pao Landicho",
@@ -46,7 +83,44 @@ const dummyAccounts = [
     birthdate: "23/4/1993",
     id: 83453,
     email: "pao@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 37289
   },
   {
     name: "Jul Santos",
@@ -54,7 +128,44 @@ const dummyAccounts = [
     birthdate: "7/12/2002",
     id: 83490,
     email: "jul@gmail.com",
-    password: "pass1"
+    password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 19289
   },
   {
     name: "Jas Santos",
@@ -62,8 +173,45 @@ const dummyAccounts = [
     birthdate: "31/7/1998",
     id: 89222,
     email: "jas@gmail.com",
-    password: "pass1"
-  },
+    password: "pass1",
+    income: [
+      {
+        description: "sell tv",
+        amount: 10000,
+        id: 7564
+      },
+      {
+        description: "side hustle",
+        amount: 3000,
+        id: 8472
+      },
+      {
+        description: "collect rent",
+        amount: 500,
+        id: 5324
+      }
+    ],
+    expense: [
+      {
+        description: "buy clothes",
+        amount: 8000,
+        id: 4124
+      },
+      {
+        description: "gas",
+        amount: 3212,
+        id: 8289
+      },
+      {
+        description: "pay rent",
+        amount: 999,
+        id: 3829
+      }
+    ],
+    totalIncome: 13500,
+    totalExpense: 12211,
+    totalBudget: 51289
+  }
 ];
 
 let localAccounts = JSON.parse(localStorage.getItem('accounts'));
@@ -84,6 +232,56 @@ function App() {
       return [account, ...prevAccounts];
     });
   }
+
+  const addIncomeHandler = income => {
+    setCustomerIncome(prevIncome => {
+      return [income, ...prevIncome];
+    });
+    customer.income.unshift(income);
+  }
+
+  const addCustomerIncomeHandler = customerIncome => {
+    setCustomerIncome(customerIncome);
+  }
+
+  const addExpenseHandler = expense => {
+    setCustomerExpense(prevExpense => {
+      return [expense, ...prevExpense];
+    });
+    customer.expense.unshift(expense);
+  }
+
+  const addCustomerExpenseHandler = customerExpense => {
+    setCustomerExpense(customerExpense);
+  }
+
+  const totalIncomeHandler = totalIncome => {
+    setCustomerTotalIncome(totalIncome);
+  }
+
+  const addCustomerTotalIncomeHandler = customerTotalIncome => {
+    setCustomerTotalIncome(customerTotalIncome);
+  }
+
+  const totalExpenseHandler = totalExpense => {
+    setCustomerTotalExpense(totalExpense);
+  }
+
+  const addCustomerTotalExpenseHandler = customerTotalExpense => {
+    setCustomerTotalExpense(customerTotalExpense);
+  }
+
+  const totalBudgetHandler = totalBudget => {
+    setCustomerTotalBudget(totalBudget);
+  }
+
+  const addCustomerTotalBudgetHandler = customerTotalBudget => {
+    setCustomerTotalBudget(customerTotalBudget);
+  }
+
+  // Login Page
+  const [accountType, setAccountType] = useState();
+
   // Choose Acc
   const [whoseAccount, setWhoseAccount] = useState('');
   const [showProfile, setShowProfile] = useState('');
@@ -98,6 +296,12 @@ function App() {
 
   // Budget App
   const [customer, setCustomer] = useState('');
+  const [customerIncome, setCustomerIncome] = useState('');
+  const [customerExpense, setCustomerExpense] = useState('');
+  const [customerTotalIncome, setCustomerTotalIncome] = useState('');
+  const [customerTotalExpense, setCustomerTotalExpense] = useState('');
+  const [customerTotalBudget, setCustomerTotalBudget] = useState('');
+  
 
   const showClick = (whichButton) => {
     setShowResult(false);
@@ -133,7 +337,7 @@ function App() {
       <Route path="/" exact>
         <header className="login-header"><div>ShawnPH Bank</div></header>
         <div className="login">
-          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} customer={customer} />
+          <LoginForm authentication={adminUser} owners={accounts} setCustomer={setCustomer} onAddCustomerIncome={addCustomerIncomeHandler} onAddCustomerExpense={addCustomerExpenseHandler} onAddCustomerTotalIncome={addCustomerTotalIncomeHandler} onAddCustomerTotalExpense={addCustomerTotalExpenseHandler} onAddCustomerTotalBudget={addCustomerTotalBudgetHandler} accountType={accountType} setAccountType={setAccountType} />
         </div>
       </Route>
       <Route path="/transactions">
@@ -180,7 +384,7 @@ function App() {
         <TransactionHistory owners={accounts}/>
       </Route>
       <Route path="/budgetapp">
-        <BudgetAppHome customer={customer} />
+        <BudgetAppHome owners={accounts} customer={customer} accountType={accountType} onAddIncome={addIncomeHandler} onAddExpense={addExpenseHandler} customerIncome={customerIncome} setCustomerIncome={setCustomerIncome} customerExpense={customerExpense} setCustomerExpense={setCustomerExpense} customerTotalIncome={customerTotalIncome} onAdjustTotalIncome={totalIncomeHandler} customerTotalExpense={customerTotalExpense} onAdjustTotalExpense={totalExpenseHandler} customerTotalBudget={customerTotalBudget} onAdjustTotalBudget={totalBudgetHandler} />
       </Route>
     </div>
   );

@@ -209,7 +209,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .transaction-list {
   width: 92%;
-  max-height: 10rem;
+  max-height: 10.5rem;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -240,7 +240,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #fff;
   padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   border-radius: 0.3rem;
-  width: 18rem;
+  width: 20rem;
   display: flex;
   justify-content:space-between;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -259,7 +259,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .transaction-amount {
-  transform: translateX(3rem);
+  transform: translateX(0.01rem);
 }
 
 .delete-btn {
